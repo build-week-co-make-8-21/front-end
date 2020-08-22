@@ -7,4 +7,5 @@
 | Junior React  | Senior React       |
 | ------------- | ------------------ |
 | Mike Mitchell | Christian Bautista |
+| ------------- | ------------------ |
 | Trevor Armes  |
