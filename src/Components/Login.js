@@ -21,8 +21,8 @@ const Login = (props) => {
 				props.history.push("/feed");
 			})
 			.catch((error) => {
-				console.log("Error:", error.response.data.error);
-				alert(`Oops.. Looks like there was an error. ${error.response.data.error}`);
+				console.log("Error:", error.response.data.message);
+				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
 	// when you have handled the token, navigate to the BubblePage route
