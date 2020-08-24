@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
 
+import logo from "../Assets/co-make-logo-v2.png";
+
 const formSchema = yup.object().shape({
 	username: yup.string().min(3, "Username must be at least 3 characters").required(),
 	email: yup.string().email("Must be a valid Email").required(),
@@ -13,14 +15,10 @@ const formSchema = yup.object().shape({
 
 const initialFormValues = {
 	username: "",
-	Email: "",
-	Phone: "",
 	passwordConfirmation: "",
 };
 const initialErrors = {
 	username: "",
-	Email: "",
-	Phone: "",
 	passwordConfirmation: "",
 };
 const initialDisabled = true;
@@ -60,8 +58,6 @@ export default function Signup() {
 		axios
 			.post("https://bw-co-make-8-21.herokuapp.com/signup", {
 				username: formValues.username,
-				email: formValues.email,
-				phone: formValues.phone,
 				password: formValues.password,
 			})
 			.then(() => {
@@ -88,10 +84,13 @@ export default function Signup() {
 	return (
 		<>
 			<div className="signup-header">
-				<div className="header-logo"></div>
+				<div className="header-logo">
+					{" "}
+					<img src={logo} alt="logo" />
+				</div>
 			</div>
 			<div className="signup-form-contianer">
-				<h2> REGISTER </h2>
+				<h2> SIGNUP </h2>
 				<form onSubmit={formSubmit}>
 					<div className="label-input-group">
 						<label className="reg-label" htmlFor="username">
@@ -105,7 +104,7 @@ export default function Signup() {
 						/>
 						<br />
 					</div>
-					{errors.username.length < 0 ? <p className="error">{errors.username}</p> : null}
+					{/* {errors.username.length < 0 ? <p className="error">{errors.username}</p> : null} */}
 					<br />
 					<div className="label-input-group">
 						<label className="signup-label" htmlFor="email">
@@ -114,16 +113,16 @@ export default function Signup() {
 						<input type="email" name="email" value={formValues.email} onChange={inputChange} />
 						<br />
 					</div>
-					{errors.email.length < 0 ? <p className="error">{errors.email}</p> : null}
+					{/* {errors.email.length < 0 ? <p className="error">{errors.email}</p> : null} */}
 					<br />
 					<div className="label-input-group">
 						<label className="signup-label" htmlFor="phone">
-							Email&nbsp;&nbsp;&nbsp;
+							Phone&nbsp;&nbsp;&nbsp;
 						</label>
-						<input type="tel" name="phone" value={formValues.email} onChange={inputChange} />
+						<input type="tel" name="phone" value={formValues.phone} onChange={inputChange} />
 						<br />
 					</div>
-					{errors.phone.length < 0 ? <p className="error">{errors.phone}</p> : null}
+					{/* {errors.phone.length < 0 ? <p className="error">{errors.phone}</p> : null} */}
 					<br />
 					<div className="label-input-group">
 						<label className="reg-label" htmlFor="password">
@@ -143,15 +142,14 @@ export default function Signup() {
 						</label>
 						<input type="password" name="passwordConfirmation" onChange={inputChange} /> <br />
 					</div>
-					{formValues.passwordConfirmation !== formValues.password ? (
-						<p className="error">{errors.passwordConfirmation}</p>
-					) : null}
+					{/* {formValues.passwordConfirmation !== formValues.password ? (
+					<p className="error">{errors.passwordConfirmation}</p>) : null} */}
 					<p className="form-terms-text">
 						By clicking on the register button you agree with Co-Make App Terms & Conditions,
 						Fair Use, forever and ever so help you God.
 					</p>
 					<button disabled={buttonDisabled} name="submit">
-						REGISTER
+						SIGNUP
 					</button>
 				</form>
 
