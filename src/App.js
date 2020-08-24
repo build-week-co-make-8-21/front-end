@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./Assets/co-make-logo-v2.png";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
+import Feed from "./Components/Feed";
+
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 import PrivateRoute from "./Components/PrivateRoute";
+import { FeedContext } from "./contexts/context";
 
 function App() {
+	const [issues, addIssues] = useState([]);
+
+	useEffect(() => {
+		axiosWithAuth()
+			.get("api/issues")
+			.then((res) => {
+				addIssues(res.data.data);
+			});
+	}, []);
 	return (
 		<Router>
-			<div className="App">
-				{/* <header className="App-header">
+			<FeedContext.Provider value={{ issues, addIssues }}>
+				<div className="App">
+					{/* <header className="App-header">
 					<Link exact path="/" component={Signup}>
-						<img src={logo} className="App-logo" alt="logo" />
+					<img src={logo} className="App-logo" alt="logo" />
 					</Link>
 					<p>Co-make is your local hub to resolve issues in your community.</p>
 				</header> */}
-			</div>
-			<Route exact path="/" component={Signup} />
-			<Route exact path="/login" component={Login} />
+				</div>
+				<Route exact path="/" component={Signup} />
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/feed" component={Feed} />
+			</FeedContext.Provider>
 		</Router>
 	);
 }
-
 export default App;
