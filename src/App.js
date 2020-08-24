@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./Assets/co-make-logo-v2.png";
 import "./App.css";
+import Signup from "./Components/Signup";
 
 function App() {
 	return (
