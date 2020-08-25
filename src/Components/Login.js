@@ -20,7 +20,7 @@ const initialErrors = {
 };
 const initialDisabled = true;
 
-function Login() {
+export default function Login() {
 	const { setUsername } = useContext(FeedContext);
 	const [credentials, setCredentials] = useState(initialFormValues);
 	const [errors, setErrors] = useState(initialErrors);
@@ -104,5 +104,3 @@ function Login() {
 		</>
 	);
 }
-
-export default Login;

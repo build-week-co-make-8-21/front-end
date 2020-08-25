@@ -1,15 +1,29 @@
-import React, { useEffect, useContext } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory, Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { FeedContext } from "../contexts/context";
-
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import IssueCard from "./IssueCard";
 
 const Feed = () => {
-	const { issues, addIssues } = useContext(FeedContext);
+	const { issues } = useContext(FeedContext);
+
+	// useEffect(() => {
+	// 	axiosWithAuth()
+	// 		.get("/api/categories")
+	// 		.then((response) => {
+	// 			console.log(response);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error.response.data);
+	// 			alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
+	// 		});
+	// });
+
 	return (
 		<div className="feed">
-			<button>Add Issue</button>
+			<NavLink to="/create">
+				<button>Add Issue</button>
+			</NavLink>
 			{issues &&
 				issues.map((issue) => {
 					return (

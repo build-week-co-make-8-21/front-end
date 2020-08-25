@@ -25,17 +25,18 @@ const initialErrors = {
 	phoneNumber: "",
 	password: "",
 };
+
 const initialDisabled = true;
 
 export default function Signup() {
 	const [formValues, setFormValues] = useState(initialFormValues);
 	const [errors, setErrors] = useState(initialErrors);
-	const [buttonDisabled, setButtonDisabled] = useState(initialDisabled);
+	const [disabled, setDisabled] = useState(initialDisabled);
 	const { push } = useHistory();
 
 	useEffect(() => {
 		formSchema.isValid(formValues).then((valid) => {
-			setButtonDisabled(!valid);
+			setDisabled(!valid);
 		});
 	}, [formValues]);
 
@@ -80,7 +81,7 @@ export default function Signup() {
 	const inputChange = (event) => {
 		event.persist();
 		validateChange(event);
-		setFormValues(...formValues, ([event.target.name]: event.target.value));
+		setFormValues({ ...formValues, [event.target.name]: event.target.value });
 	};
 
 	return (
@@ -158,7 +159,7 @@ export default function Signup() {
 						By clicking on the register button you agree with Co-Make App Terms & Conditions,
 						Fair Use, forever and ever so help you God.
 					</p>
-					<button disabled={buttonDisabled} name="submit">
+					<button disabled={disabled} name="submit">
 						SIGNUP
 					</button>
 				</form>
