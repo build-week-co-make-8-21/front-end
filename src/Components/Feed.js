@@ -5,7 +5,7 @@ import { FeedContext } from "../contexts/context";
 
 import IssueCard from "./IssueCard";
 
-const Feed = (props) => {
+const Feed = () => {
 	const { issues, addIssues } = useContext(FeedContext);
 	return (
 		<div className="feed">

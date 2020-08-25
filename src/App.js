@@ -13,17 +13,19 @@ import { FeedContext } from "./contexts/context";
 
 function App() {
 	const [issues, addIssues] = useState([]);
+	const [username, setUsername] = useState("");
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get("api/issues")
+			.get("/api/issues")
 			.then((res) => {
-				addIssues(res.data.data);
+				console.log(res);
+				addIssues(res.data);
 			});
 	}, []);
 	return (
 		<Router>
-			<FeedContext.Provider value={{ issues, addIssues }}>
+			<FeedContext.Provider value={{ issues, addIssues, setUsername }}>
 				<div className="App">
 					{/* <header className="App-header">
 					<Link exact path="/" component={Signup}>
@@ -34,7 +36,7 @@ function App() {
 				</div>
 				<Route exact path="/" component={Signup} />
 				<Route exact path="/login" component={Login} />
-				<Route exact path="/feed" component={Feed} />
+				<PrivateRoute exact path="/feed" component={Feed} />
 			</FeedContext.Provider>
 		</Router>
 	);
