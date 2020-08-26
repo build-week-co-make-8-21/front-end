@@ -5,7 +5,8 @@ import "./App.css";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Feed from "./Components/Feed";
-import AddIssuesForm from "./Components/AddIssueForm";
+import AddIssueForm from "./Components/AddIssueForm";
+import EditIssueForm from "./Components/EditIssueForm";
 import IssuePage from "./Components/IssuePage";
 
 import { axiosWithAuth } from "./utils/axiosWithAuth";
@@ -15,6 +16,7 @@ import { FeedContext } from "./contexts/context";
 export default function App() {
 	const [issues, addIssues] = useState([]);
 	const [username, setUsername] = useState("");
+	const [searchValue, setSearchValue] = useState("");
 
 	const getIssues = () => {
 		axiosWithAuth()
@@ -31,21 +33,34 @@ export default function App() {
 
 	return (
 		<Router>
-			<FeedContext.Provider value={{ issues, addIssues, username, setUsername, getIssues }}>
+			<FeedContext.Provider
+				value={{
+					issues,
+					addIssues,
+					username,
+					setUsername,
+					getIssues,
+					searchValue,
+					setSearchValue,
+				}}
+			>
 				<Route exact path="/" component={Signup} />
 				<Route exact path="/login" component={Login} />
 				<PrivateRoute exact path="/feed" component={Feed} />
-				<PrivateRoute exact path="/create" component={AddIssuesForm} />
+				<PrivateRoute exact path="/create" component={AddIssueForm} />
+				<PrivateRoute exact path="/editIssue/:id" component={EditIssueForm} />
 				{issues &&
 					issues.map((issue) => {
 						return (
-							<PrivateRoute
-								exact
-								style={{ textDecoration: "none" }}
-								path={`/issues/${issue.issueId}`}
-							>
-								<IssuePage issue={issue} />
-							</PrivateRoute>
+							<>
+								<PrivateRoute
+									exact
+									style={{ textDecoration: "none" }}
+									path={`/issues/${issue.issueId}`}
+								>
+									<IssuePage issue={issue} />
+								</PrivateRoute>
+							</>
 						);
 					})}
 				{/* <PrivateRoute path="/issues/:id" component={IssuePage} /> */}
