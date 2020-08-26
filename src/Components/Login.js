@@ -21,7 +21,7 @@ const initialErrors = {
 const initialDisabled = true;
 
 export default function Login() {
-	const { setUsername } = useContext(FeedContext);
+	const { setUsername, getIssues } = useContext(FeedContext);
 	const [credentials, setCredentials] = useState(initialFormValues);
 	const [errors, setErrors] = useState(initialErrors);
 	const [buttonDisabled, setButtonDisabled] = useState(initialDisabled);
@@ -67,6 +67,7 @@ export default function Login() {
 				push("/feed");
 				setUsername(credentials.username);
 				setCredentials(initialFormValues);
+				getIssues();
 			})
 			.catch((error) => {
 				console.log("Error:", error.response.data);

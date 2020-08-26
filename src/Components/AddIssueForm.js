@@ -17,7 +17,7 @@ const formSchema = yup.object().shape({
 const initialDisabled = true;
 
 export default function AddIssuesForm() {
-	const { issues, addIssues, username } = useContext(FeedContext);
+	const { issues, addIssues, username, getIssues } = useContext(FeedContext);
 	const initialFormValues = {
 		title: "",
 		categoryId: "",
@@ -72,10 +72,13 @@ export default function AddIssuesForm() {
 				username: username,
 			})
 			.then((response) => {
-				console.log(response, username);
+				console.log("formvalues", formValues);
+				console.log("response", response);
+				console.log("issues", issues);
 				addIssues([response.data, ...issues]);
 				setFormValues(initialFormValues);
 				console.log(response.data);
+				getIssues();
 				history.push("/feed");
 			})
 			.catch((error) => {

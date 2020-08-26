@@ -16,17 +16,22 @@ export default function App() {
 	const [issues, addIssues] = useState([]);
 	const [username, setUsername] = useState("");
 
-	useEffect(() => {
+	const getIssues = () => {
 		axiosWithAuth()
 			.get("/api/issues")
 			.then((response) => {
 				console.log(response);
 				addIssues(response.data);
 			});
-	}, [setUsername]);
+	};
+
+	useEffect(() => {
+		getIssues();
+	}, []);
+
 	return (
 		<Router>
-			<FeedContext.Provider value={{ issues, addIssues, username, setUsername }}>
+			<FeedContext.Provider value={{ issues, addIssues, username, setUsername, getIssues }}>
 				<Route exact path="/" component={Signup} />
 				<Route exact path="/login" component={Login} />
 				<PrivateRoute exact path="/feed" component={Feed} />

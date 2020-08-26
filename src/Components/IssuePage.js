@@ -1,25 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { FeedContext } from "../contexts/context";
 
-export default function RecipePage(props) {
+export default function IssuePage(props) {
 	const { issue } = props;
+	const { getIssues } = useContext(FeedContext);
 	const history = useHistory();
 
-	useEffect(() => {
-		console.log("its working!");
-		axiosWithAuth()
-			.get(`/issues/${issue.issueId}`)
-			.then((response) => {
-				console.log(response);
-			});
-	}, []);
+	// useEffect(() => {
+	// 	console.log("its working!");
+	// 	axiosWithAuth()
+	// 		.get(`/issues/${issue.issueId}`)
+	// 		.then((response) => {
+	// 			console.log(response);
+	// 		});
+	// }, [issue.issueId]);
 
 	const deleteIssue = (id) => {
+		console.log(id);
 		axiosWithAuth()
-			.delete(`api/issues/${id}`)
+			.delete(`/api/issues/${id}`)
 			.then(() => {
+				getIssues();
 				history.push("/feed");
+			})
+			.catch((error) => {
+				console.log(error);
+				alert(`error ${error.message}`);
 			});
 	};
 

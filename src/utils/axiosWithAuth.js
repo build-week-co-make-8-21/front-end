@@ -5,6 +5,6 @@ export const axiosWithAuth = () => {
 		headers: {
 			authorization: window.localStorage.getItem("token"),
 		},
-		baseURL: "https://bw-co-make-8-21.herokuapp.com/",
+		baseURL: "https://bw-co-make-8-21.herokuapp.com",
 	});
 };

@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import IssueCard from "./IssueCard";
 
 const Feed = () => {
-	const { issues } = useContext(FeedContext);
+	const { issues, getIssues } = useContext(FeedContext);
 
 	// useEffect(() => {
 	// 	axiosWithAuth()
