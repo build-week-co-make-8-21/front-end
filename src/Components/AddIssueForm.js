@@ -75,6 +75,7 @@ export default function AddIssuesForm() {
 				console.log("formvalues", formValues);
 				console.log("response", response);
 				console.log("issues", issues);
+				console.log("username", username);
 				addIssues([response.data, ...issues]);
 				setFormValues(initialFormValues);
 				console.log(response.data);

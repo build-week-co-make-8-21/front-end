@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import { FeedContext } from "../contexts/context";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import IssueCard from "./IssueCard";
@@ -7,17 +7,20 @@ import IssueCard from "./IssueCard";
 const Feed = () => {
 	const { issues, getIssues } = useContext(FeedContext);
 
-	// useEffect(() => {
-	// 	axiosWithAuth()
-	// 		.get("/api/categories")
-	// 		.then((response) => {
-	// 			console.log(response);
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log(error.response.data);
-	// 			alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
-	// 		});
-	// });
+	const params = useParams();
+	const id = params.id;
+
+	useEffect(() => {
+		axiosWithAuth()
+			.get(`/api/issues/4`)
+			.then((response) => {
+				console.log("get edit response data", response);
+			})
+			.catch((error) => {
+				console.log(error.response.data);
+				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
+			});
+	});
 
 	return (
 		<div className="feed">
