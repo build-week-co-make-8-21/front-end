@@ -16,6 +16,7 @@ import { FeedContext } from "./contexts/context";
 export default function App() {
 	const [issues, addIssues] = useState([]);
 	const [username, setUsername] = useState("");
+	const [searchValue, setSearchValue] = useState("");
 
 	const getIssues = () => {
 		axiosWithAuth()
@@ -32,7 +33,17 @@ export default function App() {
 
 	return (
 		<Router>
-			<FeedContext.Provider value={{ issues, addIssues, username, setUsername, getIssues }}>
+			<FeedContext.Provider
+				value={{
+					issues,
+					addIssues,
+					username,
+					setUsername,
+					getIssues,
+					searchValue,
+					setSearchValue,
+				}}
+			>
 				<Route exact path="/" component={Signup} />
 				<Route exact path="/login" component={Login} />
 				<PrivateRoute exact path="/feed" component={Feed} />
