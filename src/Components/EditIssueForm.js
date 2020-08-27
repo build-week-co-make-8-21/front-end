@@ -3,6 +3,62 @@ import * as yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import Styled from "styled-components";
+
+const FormContainer = Styled.div`
+ margin: 5% auto;
+ margin-top: 150px;
+ display: flex;
+ text-align: center;
+ flex-direction: column;
+ justify-content: center;
+ background-color: white;
+ border-radius: 15px;
+ width: 500px;
+ h2{
+     color: #3184ED;
+ }
+ button {
+    width: 100px;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #3184ed;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    border: unset;
+    margin: 0 auto;
+    margin-bottom: 3%;
+ }
+`;
+
+const H6 = Styled.h6`
+display: flex;
+height: 2rem;
+justify-content:center;
+text-align: center;
+align-items: center;
+width: 3rem;
+vertical-align: center;
+margin:unset;
+margin-left: 90%;
+margin-top: 1%;
+font-size: 16px;
+`;
+
+const TextArea = Styled.textarea`
+width: 80%;
+height: 200px;
+`;
+
+const Img = Styled.img`
+object-fit: contain;
+width: 80%;
+height: 200px;
+`;
 
 const formSchema = yup.object().shape({
 	title: yup
@@ -100,12 +156,17 @@ export default function EditIssueForm() {
 	};
 
 	return (
-		<div>
+		<FormContainer>
+			<H6>
+				<NavLink to="/feed">
+					<i class="fas fa-times"></i>
+				</NavLink>
+			</H6>
 			<form onSubmit={formSubmit}>
-				<h2>Edit Your Post</h2>
+				<h2>Edit Post</h2>
 				<label htmlFor="title">
 					{" "}
-					Title:
+					Title:&nbsp;
 					<input
 						type="text"
 						name="title"
@@ -141,8 +202,7 @@ export default function EditIssueForm() {
 					<div className="titleError">{errors.categoryName}</div>
 				</div>
 				<label htmlFor="description">
-					Description:
-					<textarea
+					<TextArea
 						type="text"
 						name="description"
 						value={formValues.description}
@@ -155,7 +215,7 @@ export default function EditIssueForm() {
 				</div>
 				<label htmlFor="imageURL">
 					{" "}
-					Image:
+					Image:&nbsp;
 					<input
 						type="text"
 						name="imageURL"
@@ -164,16 +224,19 @@ export default function EditIssueForm() {
 						onChange={inputChange}
 					/>
 				</label>
+				<br />
 				<div className="errors">
 					<div className="titleError">{errors.imageURL}</div>
 				</div>
+				<br />
+				{formValues.imageURL !== null && formValues.imageURL !== "" ? (
+					<Img alt={formValues.title} src={`${formValues.imageURL}`} />
+				) : null}
+				<br />
 				<button type="submit" disabled={disabled} to="/feed">
 					Update
 				</button>
 			</form>
-			<NavLink to={`/issues/${id}`}>
-				<button>Cancel</button>
-			</NavLink>
-		</div>
+		</FormContainer>
 	);
 }
