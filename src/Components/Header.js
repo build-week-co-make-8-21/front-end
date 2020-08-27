@@ -4,6 +4,13 @@ import { NavLink, useHistory } from "react-router-dom";
 import Styled from "styled-components";
 import SearchBar from "./SearchBar";
 
+const ContainerDiv = Styled.nav`
+width:100vw;
+background-color: white;
+position: fixed;
+top: 0%;
+`;
+
 const HeaderDiv = Styled.div`
     width: 90%;
     margin: 0 auto;
@@ -24,7 +31,7 @@ const Links = Styled.nav`
 
 const Logout = Styled.nav`
     width: 8%;
-    height: 2.8rem;
+    height: 2.6rem;
     /* margin-left: 18%; */
     display: flex;
     justify-content: space-around;
@@ -34,15 +41,6 @@ const Logout = Styled.nav`
     font-weight: 500;
     color: white;
     cursor: pointer;
-`;
-
-const ContainerDiv = Styled.nav`
-width:100vw;
-background-color: white;
-`;
-
-const Span = Styled.span`
-color:white;
 `;
 
 export default function Header() {

@@ -8,6 +8,7 @@ import IssueCard from "./IssueCard";
 import avatar from "../Assets/avatar-default-200.png";
 
 const FeedContainer = Styled.div`
+margin-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;

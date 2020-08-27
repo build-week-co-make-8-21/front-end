@@ -6,6 +6,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import Styled from "styled-components";
 
 const FormContainer = Styled.div`
+ margin: 5% auto;
+ margin-top: 150px;
  display: flex;
  text-align: center;
  flex-direction: column;
@@ -13,9 +15,23 @@ const FormContainer = Styled.div`
  background-color: white;
  border-radius: 15px;
  width: 500px;
- margin: 5% auto;
  h2{
      color: #3184ED;
+ }
+ button {
+    width: 100px;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #3184ed;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    border: unset;
+    margin: 0 auto;
+    margin-bottom: 3%;
  }
 `;
 
@@ -203,9 +219,11 @@ export default function AddIssuesForm() {
 						onChange={inputChange}
 					/>
 				</label>
+				<br />
 				<div className="errors">
 					<div className="titleError">{errors.imageURL}</div>
 				</div>
+				<br />
 				{formValues.imageURL !== null && formValues.imageURL !== "" ? (
 					<Img alt={formValues.title} src={`${formValues.imageURL}`} />
 				) : null}
