@@ -5,21 +5,64 @@ import { NavLink } from "react-router-dom";
 
 const formScema = yup.object().shape({
 
+    title: yup
+        .string()
+        .min(3, "Title must be atleast 3 character")
+        .required("A title for your issue is required"),
+    description: yup.string().required("Your Description is empty."),
+    imageURL: yup.string().url("Must be a valid url"),
+    categoryID: yup.string().required("Please select category."),
 
-    title:
-    description:
-    imageURL
-    categoryID:
+});
 
-
-
-
-})
+const initialDisabled = true;
 
 function AddIssue() {
     const [formInfo, setFormInfo] = useState(inputValues);
     const [err, setErr] = useState(iFormErr);
-    const 
+    
+    
+	useEffect(() => {
+		formSchema.isValid(formInfo).then((valid) => {
+			setDisabled(!valid);
+		});
+	}, [formInfo]);
+
+	const validateChange = (event) => {
+		yup
+			.reach(formSchema, event.target.name)
+			.validate(event.target.value)
+			.then(() => {
+				setErr({
+					...err,
+					[event.target.name]: "",
+				});
+			})
+			.catch((error) => {
+				setErr({
+					...err,
+					[event.target.name]: error.err,
+				});
+			});
+	};
+    
+    
+    
+    
+    
+    
+    
+    
+    const [issues, addIssues] = useState({
+
+        title: '',
+        catagoryId: '',
+		descripton: '',
+		imageURL: '',
+		username: username,
+
+
+    })
       
 
     const inputValues = {
