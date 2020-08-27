@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
 import imagedefault from "../Assets/photo_gallery.jpg";
@@ -13,6 +13,14 @@ const IssueContainer = Styled.div`
  border-radius: 15px;
  width: 80%;
  margin: 5% auto;
+ margin-top: 0%;
+`;
+
+const Back = Styled.div`
+width: 60px;
+margin-left: 10%;
+margin-top: 4%;
+margin-bottom: .5%;
 `;
 
 const ImageContainer = Styled.div`
@@ -56,6 +64,13 @@ export default function IssuePage(props) {
 
 	return (
 		<>
+			<Back>
+				<Link to="/feed">
+					<i class="fas fa-chevron-left"></i>
+					&nbsp;Back
+				</Link>
+			</Back>
+
 			<IssueContainer>
 				<ImageContainer>
 					{issue.imageURL !== null && issue.imageURL !== "" ? (

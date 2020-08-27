@@ -3,6 +3,46 @@ import * as yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
 import { NavLink, useHistory } from "react-router-dom";
+import Styled from "styled-components";
+
+const FormContainer = Styled.div`
+ display: flex;
+ text-align: center;
+ flex-direction: column;
+ justify-content: center;
+ background-color: white;
+ border-radius: 15px;
+ width: 500px;
+ margin: 5% auto;
+ h2{
+     color: #3184ED;
+ }
+`;
+
+const H6 = Styled.h6`
+display: flex;
+height: 2rem;
+justify-content:center;
+text-align: center;
+align-items: center;
+width: 3rem;
+vertical-align: center;
+margin:unset;
+margin-left: 90%;
+margin-top: 1%;
+font-size: 16px;
+`;
+
+const TextArea = Styled.textarea`
+width: 80%;
+height: 200px;
+`;
+
+const Img = Styled.img`
+object-fit: contain;
+width: 80%;
+height: 200px;
+`;
 
 const formSchema = yup.object().shape({
 	title: yup
@@ -95,12 +135,17 @@ export default function AddIssuesForm() {
 	};
 
 	return (
-		<div>
+		<FormContainer>
+			<H6>
+				<NavLink to="/feed">
+					<i class="fas fa-times"></i>
+				</NavLink>
+			</H6>
 			<form onSubmit={formSubmit}>
 				<h2>Add New Post</h2>
 				<label htmlFor="title">
 					{" "}
-					Title:
+					Title:&nbsp;
 					<input
 						type="text"
 						name="title"
@@ -136,8 +181,7 @@ export default function AddIssuesForm() {
 					<div className="titleError">{errors.categoryName}</div>
 				</div>
 				<label htmlFor="description">
-					Description:
-					<textarea
+					<TextArea
 						type="text"
 						name="description"
 						value={formValues.description}
@@ -150,7 +194,7 @@ export default function AddIssuesForm() {
 				</div>
 				<label htmlFor="imageURL">
 					{" "}
-					Image:
+					Image:&nbsp;
 					<input
 						type="text"
 						name="imageURL"
@@ -162,13 +206,14 @@ export default function AddIssuesForm() {
 				<div className="errors">
 					<div className="titleError">{errors.imageURL}</div>
 				</div>
+				{formValues.imageURL !== null && formValues.imageURL !== "" ? (
+					<Img alt={formValues.title} src={`${formValues.imageURL}`} />
+				) : null}
+				<br />
 				<button type="submit" disabled={disabled} to="/feed">
 					Post
 				</button>
 			</form>
-			<NavLink to="/feed">
-				<button>Cancel</button>
-			</NavLink>
-		</div>
+		</FormContainer>
 	);
 }

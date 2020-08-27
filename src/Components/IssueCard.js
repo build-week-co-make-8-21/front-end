@@ -15,6 +15,13 @@ display: flex;
 justify-content: center;
 `;
 
+const Img = Styled.img`
+object-fit: cover;
+width: 80%;
+border-radius: 10px;
+/* height: 200px; */
+`;
+
 export default function IssueCard(props) {
 	const { issue } = props;
 	console.log("from IssueCard", issue);
@@ -22,7 +29,7 @@ export default function IssueCard(props) {
 		<CardContainer>
 			<ImageContainer>
 				{issue.imageURL !== null && issue.imageURL !== "" ? (
-					<img alt="issue pic" src={`${issue.imageURL}`} />
+					<Img alt={issue.title} src={`${issue.imageURL}`} />
 				) : null}
 			</ImageContainer>
 
