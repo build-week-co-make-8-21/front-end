@@ -58,7 +58,7 @@ p.already-registered:hover {
 
 p.form-terms-text {
 	font-size: .8rem;
-    color: crimson;
+    color: gray;
 }
 `;
 
@@ -66,11 +66,7 @@ const formSchema = yup.object().shape({
 	username: yup.string().min(3, "Username must be at least 3 characters").required(),
 	email: yup.string().email("Must be a valid Email").required(),
 	phoneNumber: yup.number().min(10, "Must be a valid Phone Number"),
-	password: yup
-		.string()
-		.min(6, "Password must be at least 6 characters")
-		.required("Password is required")
-		.required(),
+	password: yup.string().required("Password is required"),
 	passwordConfirmation: yup.string().oneOf([yup.ref("password"), null], "Password must match"),
 });
 
@@ -84,7 +80,7 @@ const initialErrors = {
 	username: "",
 	email: "",
 	phoneNumber: "",
-	password: "",
+	passwordConfirmation: "",
 };
 
 const initialDisabled = true;
