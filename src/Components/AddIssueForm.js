@@ -15,6 +15,44 @@ const FormContainer = Styled.div`
  background-color: white;
  border-radius: 15px;
  width: 500px;
+
+ @keyframes wiggle {
+		0% {
+			transform: translateX(39deg);
+		}
+		10% {
+			transform: translateX(-8deg);
+		}
+		20% {
+			transform: skewX(37deg);
+		}
+		30% {
+			transform: skewX(-6deg);
+		}
+		40% {
+			transform: skewX(35deg);
+		}
+		50% {
+			transform: skewX(-4deg);
+		}
+		60% {
+			transform: skewX(33deg);
+		}
+		70% {
+			transform: skewX(-2deg);
+		}
+		80% {
+			transform: skewX(31deg);
+		}
+		90% {
+			transform: skewX(0deg);
+		}
+		100% {
+			transform: skewX(0deg);
+		}
+	}
+
+
  h2{
      color: #3184ED;
  }
@@ -32,10 +70,21 @@ const FormContainer = Styled.div`
     border: unset;
     margin: 0 auto;
     margin-bottom: 3%;
+
+button:disabled {
+    background-color: lightgray;
+ }
+ 
+ form div div.titleError {
+        color: crimson;
+        animation-name: wiggle;
+		animation-timing-function: ease-in;
+		animation-duration: 1s;
+        animation-iteration-count: 10;
  }
 `;
 
-const H6 = Styled.h6`
+const P = Styled.p`
 display: flex;
 height: 2rem;
 justify-content:center;
@@ -152,11 +201,11 @@ export default function AddIssuesForm() {
 
 	return (
 		<FormContainer>
-			<H6>
+			<P>
 				<NavLink to="/feed">
 					<i class="fas fa-times"></i>
 				</NavLink>
-			</H6>
+			</P>
 			<form onSubmit={formSubmit}>
 				<h2>Add New Post</h2>
 				<label htmlFor="title">

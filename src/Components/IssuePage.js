@@ -5,6 +5,11 @@ import { FeedContext } from "../contexts/context";
 import imagedefault from "../Assets/photo_gallery.jpg";
 import Styled from "styled-components";
 
+const PageContainer = Styled.div`
+ margin: 5% auto;
+ margin-top: 150px;
+`;
+
 const IssueContainer = Styled.div`
  display: flex;
  flex-direction: column;
@@ -14,6 +19,71 @@ const IssueContainer = Styled.div`
  width: 80%;
  margin: 5% auto;
  margin-top: 0%;
+ padding: 3%;
+
+.category, .description, h1 {
+    text-align: center;
+    /* border: 2px solid red; */
+};
+
+.category {
+    margin-top: unset;
+}
+
+.description {
+    margin: 2% auto;
+}
+
+p.descriptionLabel {
+    text-decoration: italic;
+    color: grey;
+}
+
+h1 {
+    margin-bottom: unset;
+ }
+
+ #delete {
+     width: 60px;
+     background-color: unset;
+     border: unset;
+     font-size: 2.5rem;
+     color: black;
+     position: static;
+     top: 0%;
+     right: 0%;
+     margin: 0;
+ }
+
+ #delete:hover {
+     color: crimson;
+ }
+
+ #edit {
+    width: 100px;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #3184ed;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    border: unset;
+    margin: 0 auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+#edit:disabled {
+    background-color: lightgray;
+};
+
+#edit:hover {
+    background-color: white;
+    color: #3184ed;
+};
+ };
 `;
 
 const Back = Styled.div`
@@ -24,19 +94,19 @@ margin-bottom: .5%;
 `;
 
 const ImageContainer = Styled.div`
-object-fit: cover;
+box-sizing: border-box;
+object-fit: contain;
 display: flex;
 justify-content: center;
-margin: 5%;
+margin: 0%;
 `;
 
 const Img = Styled.img`
 border-radius: 10px;
+object-fit: contain;
+/* border: 2px solid green; */
+margin-top: 0%;
 `;
-
-const H1 = Styled.h1`
-    text-align: center;
-    `;
 
 export default function IssuePage(props) {
 	const { issue } = props;
@@ -63,7 +133,7 @@ export default function IssuePage(props) {
 	};
 
 	return (
-		<>
+		<PageContainer>
 			<Back>
 				<Link to="/feed">
 					<i class="fas fa-chevron-left"></i>
@@ -72,6 +142,9 @@ export default function IssuePage(props) {
 			</Back>
 
 			<IssueContainer>
+				<button type="button" id="delete" onClick={() => deleteIssue(issue.issueId)}>
+					<i class="far fa-trash-alt"></i>
+				</button>
 				<ImageContainer>
 					{issue.imageURL !== null && issue.imageURL !== "" ? (
 						<Img alt="issue pic" src={`${issue.imageURL}`} />
@@ -79,19 +152,18 @@ export default function IssuePage(props) {
 						<Img alt="default" src={imagedefault} />
 					)}
 				</ImageContainer>
-				<H1>{issue.title} </H1>
-				<div>Category: {issue.categoryName}</div>
+				<h1>{issue.title} </h1>
+				<div className="category">{issue.categoryName}</div>
 				{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 					<p>Posted by: {issue.username}</p>
 				) : null}
-				<div>Description: {issue.description}</div>
+				<div className="description">
+					<p className="descriptionLabel">Description</p> {issue.description}
+				</div>
 				<button type="button" id="edit" onClick={editIssue}>
 					Edit
 				</button>
-				<button type="button" id="delete" onClick={() => deleteIssue(issue.issueId)}>
-					Delete
-				</button>
 			</IssueContainer>
-		</>
+		</PageContainer>
 	);
 }

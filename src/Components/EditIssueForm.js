@@ -15,6 +15,43 @@ const FormContainer = Styled.div`
  background-color: white;
  border-radius: 15px;
  width: 500px;
+
+ @keyframes wiggle {
+		0% {
+			transform: translateX(39deg);
+		}
+		10% {
+			transform: translateX(-8deg);
+		}
+		20% {
+			transform: skewX(37deg);
+		}
+		30% {
+			transform: skewX(-6deg);
+		}
+		40% {
+			transform: skewX(35deg);
+		}
+		50% {
+			transform: skewX(-4deg);
+		}
+		60% {
+			transform: skewX(33deg);
+		}
+		70% {
+			transform: skewX(-2deg);
+		}
+		80% {
+			transform: skewX(31deg);
+		}
+		90% {
+			transform: skewX(0deg);
+		}
+		100% {
+			transform: skewX(0deg);
+		}
+	}
+
  h2{
      color: #3184ED;
  }
@@ -33,6 +70,30 @@ const FormContainer = Styled.div`
     margin: 0 auto;
     margin-bottom: 3%;
  }
+ button:disabled {
+    width: 100px;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    background-color: lightgray;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    border: unset;
+    margin: 0 auto;
+    margin-bottom: 3%;
+ }
+ 
+ form div div.titleError {
+        color: crimson;
+        animation-name: wiggle;
+		animation-timing-function: ease-in;
+		animation-duration: 1s;
+		animation-iteration-count: 10;
+ }
+
 `;
 
 const H6 = Styled.h6`
@@ -158,7 +219,7 @@ export default function EditIssueForm() {
 	return (
 		<FormContainer>
 			<H6>
-				<NavLink to="/feed">
+				<NavLink to={`/issues/${id}`}>
 					<i class="fas fa-times"></i>
 				</NavLink>
 			</H6>
