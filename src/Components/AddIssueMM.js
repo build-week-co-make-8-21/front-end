@@ -18,6 +18,7 @@ const formScema = yup.object().shape({
 const initialDisabled = true;
 
 function AddIssue() {
+
     const [formInfo, setFormInfo] = useState(inputValues);
     const [err, setErr] = useState(iFormErr);
     const [disabled, setDisabled] = useState(initialDisabled);
@@ -70,7 +71,7 @@ function AddIssue() {
 
     };
     
-    Const IssuesForm = (props) => {
+    
         const [issues, setIssues, getIssues, username] = useState({
     
             title: '',
@@ -84,7 +85,7 @@ function AddIssue() {
             e.persist();
             validateChange(e);
             setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
-
+        };
             const formSubmit = (event) => {
                 event.preventDefault();
                 axiosWithAuth()
@@ -190,7 +191,7 @@ function AddIssue() {
         );
       
   
-        }
+        
     };
 
     export default AddIssue;
