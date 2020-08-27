@@ -104,10 +104,10 @@ function EditIssueForm() {
               //Below is Code from Crisian Bautista
                 axiosWithAuth()
                 .put(`/api/issues/${id}`, {
-                  title: formValues.title,
-                  categoryId: formValues.categoryId,
-                  description: formValues.description,
-                  imageURL: formValues.imageURL,
+                  title: formInfo.title,
+                  categoryId: formInfo.categoryId,
+                  description: formInfo.description,
+                  imageURL: formInfo.imageURL,
                   // username: username,
                 })
                 .then((response) => {
@@ -168,7 +168,7 @@ function EditIssueForm() {
                         {/* The Form Below was created by Christian Bautista */}
 
                         <label htmlFor="category">
-                            <select onChange={inputChange} value={formValues.categoryId} name="categoryId">
+                            <select onChange={inputChange} value={formInfo.categoryId} name="categoryId">
                                 <option value="" default disabled>
                                     Category
 						</option>
