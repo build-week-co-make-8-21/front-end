@@ -9,7 +9,30 @@ function AddIssue() {
     const [formInfo, setFormInfo] = useState(inputValues);
     const [err, setErr] = useState(iFormErr);
 
-    const { issues, setIssues, username, getIssues } = useState()
+      //Set new Data 
+      const [issues, setIssues] = useState([
+        {
+            id: 1,
+            title: 'New Issue to Add',
+            body: 'These are my concerns',
+            image: 'http://www.yourpicturetoadd.pic',
+
+        }
+    ]);
+
+    const addNewIssue = (add) => {
+
+        const newIssue = {
+            
+            id: 1,
+            title: add.title,
+            body: add.body,
+            image: add.image
+            
+        };
+        setIssues([...issues, newIssue]);
+    };
+
 
     const inputValues = {
 
@@ -99,7 +122,14 @@ function AddIssue() {
                     <button>Cancel</button>
                 </NavLink>
             </div>
+            <div>
+            <AddForm addNewIssue={addNewIssue} />
+            <Issues issues={issues} />
+
+        </div>
         );
+      
+  
     }
 
     export default AddIssue;
