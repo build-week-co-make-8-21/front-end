@@ -193,11 +193,7 @@ function EditIssueForm() {
                         <button>Cancel</button>
                     </NavLink>
                 </div>
-                <div>
-                    <IssuesForm setIssues={setIssues} />
-                    <Issues issues={issues} />
-
-                </div>
+              
         );
       
   

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import * as yup from 'yup';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { NavLink } from "react-router-dom";
@@ -184,11 +183,7 @@ function AddIssue() {
                         <button>Cancel</button>
                     </NavLink>
                 </div>
-                <div>
-                    <IssuesForm setIssues={setIssues} />
-                    <Issues issues={issues} />
-
-                </div>
+             
         );
       
   
