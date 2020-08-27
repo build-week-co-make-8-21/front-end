@@ -67,14 +67,17 @@ const formSchema = yup.object().shape({
 	email: yup.string().email("Must be a valid Email").required(),
 	phoneNumber: yup.number().min(10, "Must be a valid Phone Number"),
 	password: yup.string().required("Password is required"),
-	passwordConfirmation: yup.string().oneOf([yup.ref("password"), null], "Password must match"),
+	passwordConfirmation: yup
+		.string()
+		.oneOf([yup.ref("password"), null], "Password must match")
+		.required("Password is required"),
 });
 
 const initialFormValues = {
 	username: "",
 	email: "",
 	phoneNumber: "",
-	password: "",
+	passwordConfirmation: "",
 };
 const initialErrors = {
 	username: "",
@@ -202,9 +205,9 @@ export default function Signup() {
 				<br />
 				<input type="password" name="passwordConfirmation" onChange={inputChange} /> <br />
 				<br />
-				<div className="errors">
+				{formValues.passwordConfirmation !== formValues.password ? (
 					<div className="titleError">{errors.passwordConfirmation}</div>
-				</div>
+				) : null}
 				<p className="form-terms-text">
 					By clicking on the register button you agree with Co-Make App <br /> Terms &
 					Conditions, Fair Use, forever and ever so help you God.

@@ -94,16 +94,17 @@ margin-bottom: .5%;
 `;
 
 const ImageContainer = Styled.div`
-box-sizing: border-box;
-object-fit: contain;
 display: flex;
+box-sizing: border-box;
+height: 50vh;
 justify-content: center;
-margin: 0%;
+margin: 0 auto;
 `;
 
 const Img = Styled.img`
-border-radius: 10px;
 object-fit: contain;
+width: 50vw;
+border-radius: 10px;
 /* border: 2px solid green; */
 margin-top: 0%;
 `;
