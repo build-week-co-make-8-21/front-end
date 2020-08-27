@@ -3,50 +3,41 @@ import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { NavLink } from "react-router-dom";
 
+const formScema = yup.object().shape({
 
+
+    title:
+    description:
+    imageURL
+    categoryID:
+
+
+
+
+})
 
 function AddIssue() {
     const [formInfo, setFormInfo] = useState(inputValues);
     const [err, setErr] = useState(iFormErr);
-
-      //Set new Data 
-      const [issues, setIssues] = useState([
-        {
-            id: 1,
-            title: 'New Issue to Add',
-            body: 'These are my concerns',
-            image: 'http://www.yourpicturetoadd.pic',
-
-        }
-    ]);
-
-    const addNewIssue = (add) => {
-
-        const newIssue = {
-            
-            id: 1,
-            title: add.title,
-            body: add.body,
-            image: add.image
-            
-        };
-        setIssues([...issues, newIssue]);
-    };
-
+    const 
+      
 
     const inputValues = {
 
-        title: "",
-		body: "",
-		imageURL: "",
+        title: '',
+        catagoryId: '',
+		descripton: '',
+		imageURL: '',
 		username: username,
 	};
 
     const iFormErr = {
-      title: "",
-      body: "",
-      imageURL: "",
+      title: '',
+      description: '',
+      catagoryId: '',
+        imageURL: '',
       username: username,
+      
 
     };
     
@@ -62,7 +53,7 @@ function AddIssue() {
                 .post("/api/issues", {
                     title: formInfo.title,
                     username: username,
-                    body: formInfo.body,
+                    description: formInfo.description,
                     imageURL: formInfo.imageURL,
                 })
                 .then((response) => {
@@ -98,12 +89,12 @@ function AddIssue() {
                         onChange={inputChange}
                     />
 
-                    <label htmlFor="body">Description Of Issue</label>
+                    <label htmlFor="description">Description Of Issue</label>
                     <textarea
-                        id="body"
+                        id="description"
                         placeholder="Enter Descripton of Issue"
-                        name="body"
-                        value={formInfo.body}
+                        name="description"
+                        value={formInfo.description}
                         onChange={inputChange}
                     />
                   
