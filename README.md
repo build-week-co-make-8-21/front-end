@@ -8,4 +8,3 @@
 | ------------- | ------------------ |
 | Mike Mitchell | Christian Bautista |
 | ------------- | ------------------ |
-| Trevor Armes  |
