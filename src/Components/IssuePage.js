@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
@@ -7,15 +7,6 @@ export default function IssuePage(props) {
 	const { issue } = props;
 	const { getIssues } = useContext(FeedContext);
 	const history = useHistory();
-
-	// useEffect(() => {
-	// 	console.log("its working!");
-	// 	axiosWithAuth()
-	// 		.get(`/issues/${issue.issueId}`)
-	// 		.then((response) => {
-	// 			console.log(response);
-	// 		});
-	// }, [issue.issueId]);
 
 	const deleteIssue = (id) => {
 		console.log(id);
@@ -39,9 +30,9 @@ export default function IssuePage(props) {
 			<div>{issue.title} </div>
 			<div>Category: {issue.categoryName}</div>
 			<div>Posted By: {issue.username}</div>
-			<Link to={`/editIssue/${issue.issueId}`}>Edit Issue</Link>
+			<Link to={`/editIssue/${issue.issueId}`}>Edit</Link>
 			<button type="button" id="delete" onClick={() => deleteIssue(issue.issueId)}>
-				Delete Issue
+				Delete
 			</button>
 		</div>
 	);

@@ -8,6 +8,7 @@ import Feed from "./Components/Feed";
 import AddIssueForm from "./Components/AddIssueForm";
 import EditIssueForm from "./Components/EditIssueForm";
 import IssuePage from "./Components/IssuePage";
+import Header from "./Components/Header";
 
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import PrivateRoute from "./Components/PrivateRoute";
@@ -44,6 +45,7 @@ export default function App() {
 					setSearchValue,
 				}}
 			>
+				<Header />
 				<Route exact path="/" component={Signup} />
 				<Route exact path="/login" component={Login} />
 				<PrivateRoute exact path="/feed" component={Feed} />

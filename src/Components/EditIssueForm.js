@@ -168,7 +168,7 @@ export default function EditIssueForm() {
 					<div className="titleError">{errors.imageURL}</div>
 				</div>
 				<button type="submit" disabled={disabled} to="/feed">
-					Post
+					Update
 				</button>
 			</form>
 			<NavLink to="/feed">
