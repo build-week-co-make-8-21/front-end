@@ -4,6 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
 import imagedefault from "../Assets/photo_gallery.jpg";
 import Styled from "styled-components";
+import Upvote from "./Upvote";
 
 const PageContainer = Styled.div`
  margin: 5% auto;
@@ -158,6 +159,7 @@ export default function IssuePage(props) {
 				{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 					<p>Posted by: {issue.username}</p>
 				) : null}
+				<Upvote issue={issue} />
 				<div className="description">
 					<p className="descriptionLabel">Description</p> {issue.description}
 				</div>

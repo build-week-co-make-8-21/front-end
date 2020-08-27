@@ -1,5 +1,6 @@
 import React from "react";
 import Styled from "styled-components";
+import Upvote from "./Upvote";
 
 const CardContainer = Styled.div`
 background-color: white;
@@ -25,6 +26,7 @@ border-radius: 10px;
 export default function IssueCard(props) {
 	const { issue } = props;
 	console.log("from IssueCard", issue);
+
 	return (
 		<CardContainer>
 			<ImageContainer>
@@ -32,13 +34,12 @@ export default function IssueCard(props) {
 					<Img alt={issue.title} src={`${issue.imageURL}`} />
 				) : null}
 			</ImageContainer>
-
 			<h2>{issue.title} </h2>
+			<Upvote issue={issue} />
 			<p>Category: {issue.categoryName}</p>
 			{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 				<p>Posted by: {issue.username}</p>
 			) : null}
-
 			<p>Decription: {issue.description}</p>
 		</CardContainer>
 	);
