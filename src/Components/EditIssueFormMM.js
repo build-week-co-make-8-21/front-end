@@ -1,65 +1,207 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import * as yup from 'yup'
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { NavLink } from "react-router-dom";
 
-const EditForm = (props) => {
-  const [edit, setEdit] = useState({
-    title: '',
-      body: '',
-    image: ''
-  });
+const formScema = yup.object().shape({
 
-  const handleChanges = (e) => {
-    console.log("What is target.value", e);
-    setEdit({
-      ...edit,
-      [e.target.name]: e.target.value
-    });
-  };
+    title: yup
+        .string()
+        .min(3, "Title must be atleast 3 character")
+        .required("A title for your issue is required"),
+    description: yup.string().required("Your Description is empty."),
+    imageURL: yup.string().url("Must be a valid url"),
+    categoryID: yup.string().required("Please select category."),
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    props.addNewEdit(edit);
-    setEdit({
-      title: '',
-      body: '',
-      image: ''
-    });
-  };
+});
 
-  return (
-    <form onSubmit={submitForm}>
-      <label htmlFor="title">Title</label>
-      <input
-        id="title"
-        type="text"
-        placeholder="Enter title"
-        name="title"
-        value={edit.title}
-        onChange={handleChanges}
-      />
+const initialDisabled = true;
 
-      <label htmlFor="body">Description Of Issue</label>
-      <textarea
-        id="body"
-        placeholder="Enter Descripton of Issue"
-        name="body"
-        value={edit.body}
-        onChange={handleChanges}
-          />
-          
-      <label htmlFor="image">Input Image URL</label>
-      <textarea
-        id="image"
-        placeholder="input Image URL"
-        name="image"
-        value={edit.image}
-        onChange={handleChanges}
-      />
+function EditIssueForm() {
+
+    const [formInfo, setFormInfo] = useState(inputValues);
+    const [err, setErr] = useState(iFormErr);
+    const [disabled, setDisabled] = useState(initialDisabled);
+    //Added Histroy based off a requirement from Christians Addform 
+    const history = useHistory();
+   
+
+  	useEffect(() => {
+		formSchema.isValid(formInfo).then((valid) => {
+			setDisabled(!valid);
+		});
+	}, [formInfo]);
+
+  useEffect(() => {
+		axiosWithAuth()
+			.get(`/api/issues/${id}`)
+			.then((response) => {
+				console.log("get response data", response);
+				setFormInfo(response.data);
+			});
+	}, [id]);
 
 
-      <button type="submit"> Edit Issue </button>
-    </form>
-  );
-};
 
-export default EditForm;
 
+
+	const validateChange = (event) => {
+		yup
+			.reach(formSchema, event.target.name)
+			.validate(event.target.value)
+			.then(() => {
+				setErr({
+					...err,
+					[event.target.name]: "",
+				});
+			})
+			.catch((error) => {
+				setErr({
+					...err,
+					[event.target.name]: error.err,
+				});
+			});
+	};
+    
+    
+
+    const inputValues = {
+
+        title: '',
+        catagoryId: '',
+		descripton: '',
+		imageURL: '',
+		username: username,
+	};
+
+    const iFormErr = {
+        title: '',
+        catagoryId: '',
+		descripton: '',
+		imageURL: '',
+		username: username,
+      
+
+    };
+    
+    
+        const [issues, setIssues, getIssues, username] = useState({
+    
+            title: '',
+            catagoryId: '',
+            descripton: '',
+            imageURL: '',
+            username: username,
+    
+        });
+        const inputChange = (e) => {
+            e.persist();
+            validateChange(e);
+            setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
+        };
+            const formSubmit = (event) => {
+              event.preventDefault();
+              //Below is Code from Crisian Bautista
+                axiosWithAuth()
+                .put(`/api/issues/${id}`, {
+                  title: formValues.title,
+                  categoryId: formValues.categoryId,
+                  description: formValues.description,
+                  imageURL: formValues.imageURL,
+                  // username: username,
+                })
+                .then((response) => {
+                  addIssues([response.data, ...issues]);
+                  setFormInfo(inputValues);
+                  console.log(response.data);
+                  getIssues();
+                  history.push("/feed");
+                    })
+                    .catch((error) => {
+                        console.log(error.response.data);
+                        alert(`there was an error. ${error.response.data.message}`);
+                    });
+            };
+
+
+
+
+            return (
+                <div>
+                    <form onSubmit={formSubmit}>
+                        <div className="errors">
+                            <div className="formErrors">{errors.title}</div>
+                            <div className="formErrors">{errors.description}</div>
+                            <div className="formErrors">{errors.imageURL}</div>
+                            <div className="formErrors">{errors.categoryName}</div>
+                        </div>
+
+                        <h1>Edit Issue</h1>
+                        <label htmlFor="title">Title</label>
+                        <input
+                            id="title"
+                            type="text"
+                            placeholder="Enter title"
+                            name="title"
+                            value={formInfo.title}
+                            onChange={inputChange}
+                        />
+                       
+                        <label htmlFor="description">Description Of Issue</label>
+                        <textarea
+                            id="description"
+                            placeholder="Enter Descripton of Issue"
+                            name="description"
+                            value={formInfo.description}
+                            onChange={inputChange}
+                        />
+                  
+                        <label htmlFor="image">Input Image URL</label>
+                        <textarea
+                            id="image"
+                            placeholder="input Image URL"
+                            name="image"
+                            value={formInfo.image}
+                            onChange={inputChange}
+                        />
+
+                        {/* The Form Below was created by Christian Bautista */}
+
+                        <label htmlFor="category">
+                            <select onChange={inputChange} value={formValues.categoryId} name="categoryId">
+                                <option value="" default disabled>
+                                    Category
+						</option>
+                                <option value={1}>Yard and Lawn</option>
+                                <option value={2}>Community Activities</option>
+                                <option value={3}>Crime & Safety</option>
+                                <option value={4}>Lost & Found</option>
+                                <option value={5}>Recommendation</option>
+                                <option value={6}>Flooding</option>
+                                <option value={7}>General</option>
+                                <option value={8}>Announcements</option>
+                                <option value={9}>Pets</option>
+                                <option value={10}>Road Closure & Transportation</option>
+                                <option value={11}>School & Education</option>
+                                <option value={12}>Holiday</option>
+                                <option value={13}>Utilities</option>
+                            </select>
+                        </label>
+                        <button type="submit" disabled={disabled} to='/feed'> Add Issue </button>
+                    </form>
+                    <NavLink to='/feed'>
+                        <button>Cancel</button>
+                    </NavLink>
+                </div>
+                <div>
+                    <IssuesForm setIssues={setIssues} />
+                    <Issues issues={issues} />
+
+                </div>
+        );
+      
+  
+        
+    };
+
+    export default EditIssueForm;
