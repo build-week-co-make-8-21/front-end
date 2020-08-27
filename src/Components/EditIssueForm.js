@@ -171,7 +171,7 @@ export default function EditIssueForm() {
 					Update
 				</button>
 			</form>
-			<NavLink to="/feed">
+			<NavLink to={`/issues/${id}`}>
 				<button>Cancel</button>
 			</NavLink>
 		</div>
