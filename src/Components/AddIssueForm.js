@@ -70,11 +70,12 @@ const FormContainer = Styled.div`
     border: unset;
     margin: 0 auto;
     margin-bottom: 3%;
-
+ }
 button:disabled {
     background-color: lightgray;
  }
- 
+
+
  form div div.titleError {
         color: crimson;
         animation-name: wiggle;

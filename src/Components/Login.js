@@ -1,13 +1,65 @@
 import React, { useState, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
+import Styled from "styled-components";
 
 import { FeedContext } from "../contexts/context";
 
+const LoginDiv = Styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 150px;
+text-align: center;
+button.loginBtn {
+    width: 100px;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #3184ed;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    margin: 10% auto;
+    border: unset;
+}
+button.loginBtn:disabled {
+        background-color: lightgray;
+    };
+
+input[type="text"], input[type="password"] {
+    text-align: center;
+    border: unset;
+    border-radius: 10px;
+    height: 2rem;
+    width:100%;
+    background-color: #ffffff;
+    font-size: 1.2rem;
+    padding-left: 5%;
+    }
+.titleError {
+	color: crimson;
+}
+p.sign-up {
+    font-size: 1rem;
+    color: crimson;
+}
+p.sign-up:hover {
+    font-size: 1rem;
+    color: #3184ed;
+}
+`;
+
 const formSchema = yup.object().shape({
 	username: yup.string().min(3, "Username must be at least 3 characters").required(),
-	password: yup.string().required("Password is required"),
+	password: yup
+		.string()
+		.min(6, "Password must be at least 6 characters")
+		.required("Password is required"),
 });
 
 const initialFormValues = {
@@ -77,19 +129,25 @@ export default function Login() {
 	// when you have handled the token, navigate to the BubblePage route
 	return (
 		<>
-			<div className="login-div">
+			<LoginDiv>
 				<h2>Login</h2>
 				<form className="login-form" onSubmit={onSubmit}>
 					<label htmlFor="username">Username/Email:</label>
+					<br />
 					<input
 						type="text"
 						name="username"
-						placeholder="username"
+						placeholder="username or email"
 						value={credentials.username}
 						onChange={handleChange}
 					/>
-					{errors.username.length < 0 ? <p className="error">{errors.username}</p> : null}
+					<br />
+					<div className="errors">
+						<div className="titleError">{errors.username}</div>
+					</div>
+					<br />
 					<label htmlFor="password">Password:</label>
+					<br />
 					<input
 						type="password"
 						name="password"
@@ -97,11 +155,19 @@ export default function Login() {
 						value={credentials.password}
 						onChange={handleChange}
 					/>
-					<button disabled={buttonDisabled} name="submit">
+					<br />
+					<div className="errors">
+						<div className="titleError">{errors.password}</div>
+					</div>
+					<button className="loginBtn" disabled={buttonDisabled} name="submit">
 						Log in
 					</button>
+					<Link to="/">
+						<p className="sign-up"> Sign-up instead </p>
+					</Link>
+					<br />
 				</form>
-			</div>
+			</LoginDiv>
 		</>
 	);
 }
