@@ -99,7 +99,7 @@ const formSchema = yup.object().shape({
 	phoneNumber: yup.number().min(10, "Must be a valid Phone Number"),
 	password: yup
 		.string()
-		.min(6, "Username must be at least 3 characters")
+		.min(6, "Username must be at least 6 characters")
 		.required("Password is required"),
 	passwordConfirmation: yup
 		.string()
