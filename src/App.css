@@ -64,3 +64,20 @@ a {
 .feed {
   display: block;
 }
+
+input[type="text"]:focus, textarea[type="text"]:focus, button:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+  outline: none;
+}
+
+option:checked {
+  background-color: #3184ed;
+  color: white;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button {
+  cursor: pointer;
+}

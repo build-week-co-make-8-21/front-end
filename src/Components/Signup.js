@@ -5,12 +5,13 @@ import * as yup from "yup";
 import Styled from "styled-components";
 
 const SignUpDiv = Styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 150px;
-text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 150px;
+	text-align: center;
+
 button {
     width: 100px;
     height: 2.6rem;
@@ -19,15 +20,30 @@ button {
     align-items: center;
     border-radius: 7px;
     background-color: #3184ed;
-    font-weight: 500;
+	font-weight: 500;
+	font-size: 1rem;
     color: white;
     cursor: pointer;
     margin: 2% auto;
     border: unset;
 }
-button:disabled {
-        background-color: lightgray;
+
+button:hover  {
+	background-color: white;
+	color: #3184ed;
+	cursor: pointer;
     };
+
+button:disabled  {
+		background-color: lightgray;
+		cursor: not-allowed;
+	};
+
+button:disabled:hover  {
+		background-color: lightgray;
+		cursor: not-allowed;
+		color: white;
+	};
 
 input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
     text-align: center;
@@ -38,14 +54,19 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
     font-size: 1.2rem;
 	margin: unset
 	}
-	
-.titleError {
-	color: crimson;
+
+.already-registered-div {
+	display: flex;
+	justify-content: center;
 }
 
 p.already-registered {
-    font-size: 1rem;
-    color: crimson;
+    font-size: .8rem;
+	color: crimson;
+	position: absolute;
+	justify-self: center;
+	align-items: center;
+	margin: auto 0;
 }
 p.already-registered:hover {
     font-size: 1rem;
@@ -55,6 +76,20 @@ p.already-registered:hover {
 p.form-terms-text {
 	font-size: .8rem;
     color: gray;
+}
+
+.errors {
+	font-size: .9rem;
+}
+
+.titleError {
+	color: crimson;
+	margin: 0 auto;
+}
+
+
+h2 {
+	color: #3184ed;
 }
 `;
 
@@ -142,7 +177,7 @@ export default function Signup() {
 
 	return (
 		<SignUpDiv>
-			<h2> SIGNUP </h2>
+			<h2> Sign Up </h2>
 			<form onSubmit={formSubmit}>
 				<label className="reg-label" htmlFor="username">
 					Username&nbsp;&nbsp;&nbsp;
@@ -209,10 +244,10 @@ export default function Signup() {
 					Conditions, Fair Use, forever and ever so help you God.
 				</p>
 				<button disabled={disabled} name="submit">
-					SIGNUP
+					Sign Up
 				</button>
 			</form>
-			<Link to="/login">
+			<Link className="already-registered-div" to="/login">
 				<p className="already-registered">Already Registered?</p>
 			</Link>
 		</SignUpDiv>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
+// components
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Feed from "./Components/Feed";
@@ -10,9 +11,9 @@ import EditIssueForm from "./Components/EditIssueForm";
 import IssuePage from "./Components/IssuePage";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import PrivateRoute from "./Components/PrivateRoute";
 
 import { axiosWithAuth } from "./utils/axiosWithAuth";
-import PrivateRoute from "./Components/PrivateRoute";
 import { FeedContext } from "./contexts/context";
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
 		axiosWithAuth()
 			.get("/api/issues")
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				addIssues(response.data);
 			});
 	};
@@ -69,7 +70,6 @@ export default function App() {
 							</>
 						);
 					})}
-				{/* <PrivateRoute path="/issues/:id" component={IssuePage} /> */}
 				<Footer />
 			</FeedContext.Provider>
 		</Router>

@@ -9,8 +9,8 @@ button {
     background-color: #3184ed;
     font-weight: 500;
     color: white;
-    cursor: pointer;
     border: unset;
+    cursor: pointer;
 }
 `;
 

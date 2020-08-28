@@ -5,31 +5,38 @@ import Styled from "styled-components";
 import SearchBar from "./SearchBar";
 
 const ContainerDiv = Styled.nav`
-width:100vw;
-background-color: white;
-position: fixed;
-top: 0%;
-`;
+	width:100vw;
+	background-color: white;
+	position: fixed;
+	top: 0%;
 
-const HeaderDiv = Styled.div`
-    width: 90%;
+.header {
+	width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     padding-top: 2%;
     padding-bottom: 2%;
-`;
+}
 
-const Links = Styled.nav`
-    display: flex;
+.links {
+	display: flex;
     justify-content: space-between;
     align-items: center;
     width: 25%;
-    display: flex;
-`;
+	display: flex;
+}
 
-const Logout = Styled.nav`
-    width: 8%;
+.search-logout {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 400px;
+
+}
+
+.logout {
+	width: 100px;
     height: 2.6rem;
     display: flex;
     justify-content: space-around;
@@ -37,8 +44,20 @@ const Logout = Styled.nav`
     border-radius: 7px;
     background-color: #3184ed;
     font-weight: 500;
-    color: white;
+	color: white;
+	margin-left: 5%
+}
+
+.logout:hover {
+	border: .5px solid #3184ed;
+    background-color: white;
+    color: #3184ed;
     cursor: pointer;
+}
+
+a:hover {
+	color: #3184ed;
+}
 `;
 
 export default function Header() {
@@ -50,22 +69,24 @@ export default function Header() {
 
 	return (
 		<ContainerDiv>
-			<HeaderDiv>
+			<div className="header">
 				<NavLink to="/feed">
 					<img src={logo} className="logo-img" alt="Logo" />
 				</NavLink>
-				<Links>
-					<a href="https://jovial-austin-69da22.netlify.app/index.html">Home</a>
+				<div className="links">
+					<a href="https://comakeapp.now.sh/feed">Home</a>
 					<a href="https://jovial-austin-69da22.netlify.app/about.html">About</a>
 					<a href="https://jovial-austin-69da22.netlify.app/team.html">Team</a>
-				</Links>
-				<SearchBar />
-				<Logout>
-					<span type="button" onClick={logout}>
-						Logout
-					</span>
-				</Logout>
-			</HeaderDiv>
+				</div>
+				<div className="search-logout">
+					<SearchBar />
+					<div className="logout">
+						<span type="button" onClick={logout}>
+							Logout
+						</span>
+					</div>
+				</div>
+			</div>
 		</ContainerDiv>
 	);
 }

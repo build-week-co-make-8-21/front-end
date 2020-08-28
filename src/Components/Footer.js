@@ -10,7 +10,6 @@ background: linear-gradient(to bottom, #56ccf2, #2f80ed);
     position: relative;
     bottom:0%;
     margin-top: 10%
-
 }
 
 .innerDiv {
@@ -54,7 +53,6 @@ hr {
     border-bottom: 1px solid white;
     width: 100%;
 }
-
 `;
 
 export default function Footer() {
@@ -66,9 +64,9 @@ export default function Footer() {
 				</NavLink>
 				<div className="break"></div>
 				<nav>
-					<a href="index.html">Home</a>
-					<a href="about.html">About</a>
-					<a href="team.html">Team</a>
+					<a href="https://jovial-austin-69da22.netlify.app/index.html">Home</a>
+					<a href="https://jovial-austin-69da22.netlify.app/about.html">About</a>
+					<a href="https://jovial-austin-69da22.netlify.app/team.html">Team</a>
 				</nav>
 				<div className="break"></div>
 				<div className="text-container">
