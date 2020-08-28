@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import Styled from "styled-components";
-
-import { FeedContext } from "../contexts/context";
 
 const UpvoteDiv = Styled.div`
 button {

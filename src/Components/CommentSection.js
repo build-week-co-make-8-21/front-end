@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useParams } from "react-router-dom";
 import Styled from "styled-components";
 
 const SectionContainer = Styled.div`
@@ -55,17 +54,15 @@ export default function CommentSection(props) {
 	const { issue } = props;
 	const [comments, addComments] = useState([]);
 	const [formValues, setFormValues] = useState(initialValues);
-	const params = useParams();
-	const id = params.id;
 
-	console.log("comments in comSection", comments);
-	console.log("issue in comSection", issue);
+	// console.log("comments in comSection", comments);
+	// console.log("issue in comSection", issue);
 
 	const getComments = () => {
 		axiosWithAuth()
 			.get(`/api/issues/${issue.issueId}/comments`)
 			.then((response) => {
-				console.log("getComments response", response.data);
+				// console.log("getComments response", response.data);
 				addComments(response.data);
 			});
 	};
@@ -79,12 +76,12 @@ export default function CommentSection(props) {
 		axiosWithAuth()
 			.post(`/api/issues/${issue.issueId}/comments`, { comment: formValues.comment })
 			.then((response) => {
-				console.log("comment response", response);
+				// console.log("comment response", response);
 				getComments();
 				setFormValues(initialValues);
 			})
 			.catch((error) => {
-				console.log(error.response.data);
+				// console.log(error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
@@ -110,7 +107,7 @@ export default function CommentSection(props) {
 				<div>
 					{comments &&
 						comments.map((comment) => {
-							console.log("comments on map", comments);
+							// console.log("comments on map", comments);
 							return (
 								<p>
 									{comment.comment} <hr />

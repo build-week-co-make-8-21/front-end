@@ -20,12 +20,11 @@ const Img = Styled.img`
 object-fit: cover;
 width: 80%;
 border-radius: 10px;
-/* height: 200px; */
 `;
 
 export default function IssueCard(props) {
 	const { issue } = props;
-	console.log("from IssueCard", issue);
+	// console.log("from IssueCard", issue);
 	const [upvote, setUpvote] = useState(0);
 
 	return (

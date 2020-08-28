@@ -134,7 +134,7 @@ const formSchema = yup.object().shape({
 const initialDisabled = true;
 
 export default function EditIssueForm() {
-	const { issues, addIssues, username, getIssues } = useContext(FeedContext);
+	const { issues, addIssues, getIssues } = useContext(FeedContext);
 	const initialFormValues = {
 		title: "",
 		categoryId: "",
@@ -164,7 +164,7 @@ export default function EditIssueForm() {
 		axiosWithAuth()
 			.get(`/api/issues/${id}`)
 			.then((response) => {
-				console.log("get edit response data", response);
+				// console.log("get edit response data", response);
 				setFormValues(response.data);
 			});
 	}, [id]);
@@ -200,12 +200,12 @@ export default function EditIssueForm() {
 			.then((response) => {
 				addIssues([response.data, ...issues]);
 				setFormValues(initialFormValues);
-				console.log(response.data);
+				// console.log(response.data);
 				getIssues();
 				history.push("/feed");
 			})
 			.catch((error) => {
-				console.log(error.response.data);
+				// console.log(error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};

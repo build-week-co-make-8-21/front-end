@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #eeecec;
+}
+
 h1,
 h2,
 h3,
@@ -23,9 +27,7 @@ a {
 .logo-img {
   height: 45px;
 }
-html {
-  background-color: #eeecec;
-}
+
 
 .App {
   text-align: center;

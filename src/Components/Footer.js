@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../Assets/logo-white.png";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Styled from "styled-components";
 
 const FooterContainer = Styled.div`
@@ -58,12 +58,6 @@ hr {
 `;
 
 export default function Footer() {
-	const history = useHistory();
-	const logout = () => {
-		localStorage.clear("token");
-		history.push("/");
-	};
-
 	return (
 		<FooterContainer>
 			<div className="innerDiv">

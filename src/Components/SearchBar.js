@@ -11,9 +11,6 @@ export default function SearchBar() {
 		<div className="searchField">
 			<form>
 				<input type="text" placeholder="🔎" value={searchValue} onChange={onInputChange} />
-				{/* <button type="submit" className="search-btn" onClick={onInputChange}>
-					<img src={searchIcon} alt="search button" />
-				</button> */}
 			</form>
 		</div>
 	);

@@ -25,7 +25,6 @@ const IssueContainer = Styled.div`
 
 .category, .description, h1 {
     text-align: center;
-    /* border: 2px solid red; */
 };
 
 .category {
@@ -107,7 +106,6 @@ const Img = Styled.img`
 object-fit: contain;
 width: 50vw;
 border-radius: 10px;
-/* border: 2px solid green; */
 margin-top: 0%;
 `;
 
@@ -118,7 +116,7 @@ export default function IssuePage(props) {
 	const [upvote, setUpvote] = useState(0);
 
 	const deleteIssue = (id) => {
-		console.log(id);
+		// console.log(id);
 		axiosWithAuth()
 			.delete(`/api/issues/${id}`)
 			.then(() => {
@@ -126,7 +124,7 @@ export default function IssuePage(props) {
 				history.push("/feed");
 			})
 			.catch((error) => {
-				console.log(error);
+				// console.log(error);
 				alert(`error ${error.message}`);
 			});
 	};
@@ -144,7 +142,6 @@ export default function IssuePage(props) {
 					&nbsp;Back
 				</Link>
 			</Back>
-
 			<IssueContainer>
 				<button type="button" id="delete" onClick={() => deleteIssue(issue.issueId)}>
 					<i className="far fa-trash-alt"></i>
@@ -169,7 +166,6 @@ export default function IssuePage(props) {
 					Edit
 				</button>
 			</IssueContainer>
-
 			<div className="comments-container">
 				<CommentSection issue={issue} />
 			</div>

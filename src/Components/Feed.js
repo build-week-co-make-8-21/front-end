@@ -40,8 +40,8 @@ margin-left: 30px;
 `;
 export default function Feed() {
 	const { issues, username, searchValue } = useContext(FeedContext);
-	console.log("username in Feed", username);
-	console.log("searchValue in Feed", searchValue);
+	// console.log("username in Feed", username);
+	// console.log("searchValue in Feed", searchValue);
 
 	return (
 		<FeedContainer>
@@ -57,7 +57,7 @@ export default function Feed() {
 			{issues &&
 				issues
 					.filter((issue) => {
-						console.log("issue in filter", issue);
+						// console.log("issue in filter", issue);
 						return (
 							issue.categoryName.toLowerCase().includes(searchValue.toLowerCase()) ||
 							// issue.username.toLowerCase().includes(searchValue.toLowerCase()) ||

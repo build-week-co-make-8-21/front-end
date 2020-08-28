@@ -18,7 +18,6 @@ const HeaderDiv = Styled.div`
     justify-content: space-between;
     padding-top: 2%;
     padding-bottom: 2%;
-    /* border: 2px solid red; */
 `;
 
 const Links = Styled.nav`
@@ -32,7 +31,6 @@ const Links = Styled.nav`
 const Logout = Styled.nav`
     width: 8%;
     height: 2.6rem;
-    /* margin-left: 18%; */
     display: flex;
     justify-content: space-around;
     align-items: center;

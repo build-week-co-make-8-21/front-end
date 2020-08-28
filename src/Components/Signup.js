@@ -4,8 +4,6 @@ import axios from "axios";
 import * as yup from "yup";
 import Styled from "styled-components";
 
-import logo from "../Assets/co-make-logo-v2.png";
-
 const SignUpDiv = Styled.div`
 display: flex;
 flex-direction: column;
@@ -36,7 +34,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
     border: unset;
     border-radius: 10px;
     height: 2rem;
-    /* width:300px; */
     background-color: #ffffff;
     font-size: 1.2rem;
 	margin: unset
@@ -127,12 +124,12 @@ export default function Signup() {
 				password: formValues.password,
 			})
 			.then(() => {
-				console.log("success");
+				// console.log("success");
 				setFormValues(initialFormValues);
 				push("/login");
 			})
 			.catch((error) => {
-				console.log(error.response.data);
+				// console.log(error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};

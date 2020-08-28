@@ -109,7 +109,6 @@ export default function Login() {
 		setCredentials({ ...credentials, [event.target.name]: event.target.value });
 	};
 
-	// make a post request to retrieve a token from the api
 	const onSubmit = (event) => {
 		event.preventDefault();
 		axiosWithAuth()
@@ -122,11 +121,11 @@ export default function Login() {
 				getIssues();
 			})
 			.catch((error) => {
-				console.log("Error:", error.response.data);
+				// console.log("Error:", error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
-	// when you have handled the token, navigate to the BubblePage route
+
 	return (
 		<>
 			<LoginDiv>

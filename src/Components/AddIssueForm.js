@@ -178,18 +178,18 @@ export default function AddIssuesForm() {
 				username: username,
 			})
 			.then((response) => {
-				console.log("formvalues", formValues);
-				console.log("response", response);
-				console.log("issues", issues);
-				console.log("username", username);
+				// console.log("formvalues", formValues);
+				// console.log("response", response);
+				// console.log("issues", issues);
+				// console.log("username", username);
 				addIssues([response.data, ...issues]);
 				setFormValues(initialFormValues);
-				console.log(response.data);
+				// console.log(response.data);
 				getIssues();
 				history.push("/feed");
 			})
 			.catch((error) => {
-				console.log(error.response.data);
+				// console.log(error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
