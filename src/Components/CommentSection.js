@@ -62,7 +62,7 @@ export default function CommentSection(props) {
 			.get(`/api/issues/${issue.issueId}/comments`)
 			.then((response) => {
 				console.log("getComments response", response.data);
-				addComments(...comments, response.data);
+				addComments(response.data);
 			});
 	};
 
@@ -77,6 +77,7 @@ export default function CommentSection(props) {
 			.then((response) => {
 				console.log("comment response", response);
 				getComments();
+				setFormValues(initialValues);
 			})
 			.catch((error) => {
 				console.log(error.response.data);
@@ -105,6 +106,7 @@ export default function CommentSection(props) {
 				<div>
 					{comments &&
 						comments.map((comment) => {
+							console.log("comments on map", comments);
 							return (
 								<p>
 									{comment.comment} <hr />
