@@ -39,7 +39,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
     /* width:300px; */
     background-color: #ffffff;
     font-size: 1.2rem;
-	padding-left: 5%;
 	margin: unset
 	}
 	

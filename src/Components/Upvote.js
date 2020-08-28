@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { FeedContext } from "../contexts/context";
 import Styled from "styled-components";
+
+import { FeedContext } from "../contexts/context";
 
 const UpvoteDiv = Styled.div`
 button {
@@ -12,17 +12,12 @@ button {
     font-weight: 500;
     color: white;
     cursor: pointer;
-    margin: 10% auto;
     border: unset;
 }
 `;
 
 export default function Upvote(props) {
-	const { username, getIssues } = useContext(FeedContext);
-	const { issue } = props;
-	const [upvote, setUpvote] = useState(0);
-	const params = useParams();
-	const id = params.id;
+	const { upvote, setUpvote } = props;
 
 	const upvotePost = (event) => {
 		event.preventDefault();

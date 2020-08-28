@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styled from "styled-components";
 import Upvote from "./Upvote";
 
@@ -26,6 +26,7 @@ border-radius: 10px;
 export default function IssueCard(props) {
 	const { issue } = props;
 	console.log("from IssueCard", issue);
+	const [upvote, setUpvote] = useState(0);
 
 	return (
 		<CardContainer>
@@ -35,7 +36,7 @@ export default function IssueCard(props) {
 				) : null}
 			</ImageContainer>
 			<h2>{issue.title} </h2>
-			<Upvote issue={issue} />
+			<Upvote upvote={upvote} setUpvote={setUpvote} />
 			<p>Category: {issue.categoryName}</p>
 			{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 				<p>Posted by: {issue.username}</p>

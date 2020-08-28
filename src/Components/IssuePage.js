@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
 import imagedefault from "../Assets/photo_gallery.jpg";
 import Styled from "styled-components";
 import Upvote from "./Upvote";
+import CommentSection from "./CommentSection";
 
 const PageContainer = Styled.div`
  margin: 5% auto;
@@ -114,6 +115,7 @@ export default function IssuePage(props) {
 	const { issue } = props;
 	const { getIssues } = useContext(FeedContext);
 	const history = useHistory();
+	const [upvote, setUpvote] = useState(0);
 
 	const deleteIssue = (id) => {
 		console.log(id);
@@ -138,14 +140,14 @@ export default function IssuePage(props) {
 		<PageContainer>
 			<Back>
 				<Link to="/feed">
-					<i class="fas fa-chevron-left"></i>
+					<i className="fas fa-chevron-left"></i>
 					&nbsp;Back
 				</Link>
 			</Back>
 
 			<IssueContainer>
 				<button type="button" id="delete" onClick={() => deleteIssue(issue.issueId)}>
-					<i class="far fa-trash-alt"></i>
+					<i className="far fa-trash-alt"></i>
 				</button>
 				<ImageContainer>
 					{issue.imageURL !== null && issue.imageURL !== "" ? (
@@ -159,7 +161,7 @@ export default function IssuePage(props) {
 				{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 					<p>Posted by: {issue.username}</p>
 				) : null}
-				<Upvote issue={issue} />
+				<Upvote upvote={upvote} setUpvote={setUpvote} />
 				<div className="description">
 					<p className="descriptionLabel">Description</p> {issue.description}
 				</div>
@@ -167,6 +169,10 @@ export default function IssuePage(props) {
 					Edit
 				</button>
 			</IssueContainer>
+
+			<div className="comments-container">
+				<CommentSection issue={issue} />
+			</div>
 		</PageContainer>
 	);
 }
