@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import Styled from "styled-components";
 
 const FooterContainer = Styled.div`
-background: linear-gradient(to bottom, #56ccf2, #2f80ed);
+    background: linear-gradient(to bottom, #56ccf2, #2f80ed);
     color: white;
     padding: 1% 0;
     position: relative;
     bottom:0%;
-    margin-top: 10%
+    margin-top: 14.4%;
 }
 
 .innerDiv {
