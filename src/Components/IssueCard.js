@@ -21,6 +21,11 @@ img.issueCard-image {
 	width: 80%;
 	border-radius: 10px;
 }
+
+.category {
+	color: gray;
+	font-style: italic;
+}
 `;
 
 export default function IssueCard(props) {
@@ -36,11 +41,18 @@ export default function IssueCard(props) {
 			</div>
 			<h2>{issue.title} </h2>
 			<Upvote upvote={upvote} setUpvote={setUpvote} />
-			<p>Category: {issue.categoryName}</p>
+			<p className="category">
+				{" "}
+				{/*<span> Category: </span>*/} {issue.categoryName}
+			</p>
 			{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
-				<p>Posted by: {issue.username}</p>
+				<p>
+					<span> Posted by: </span> {issue.username}
+				</p>
 			) : null}
-			<p>Description: {issue.description}</p>
+			<p>
+				<span> Description: </span> {issue.description}
+			</p>
 		</CardContainer>
 	);
 }
