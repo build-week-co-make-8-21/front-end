@@ -19,6 +19,7 @@ export default function App() {
 	const [issues, addIssues] = useState([]);
 	const [username, setUsername] = useState("");
 	const [searchValue, setSearchValue] = useState("");
+	const [upvote, setUpvote] = useState(0);
 
 	const getIssues = () => {
 		axiosWithAuth()
@@ -44,6 +45,8 @@ export default function App() {
 					getIssues,
 					searchValue,
 					setSearchValue,
+					upvote,
+					setUpvote,
 				}}
 			>
 				<Header />
