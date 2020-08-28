@@ -1,5 +1,21 @@
 import React, { useContext } from "react";
 import { FeedContext } from "../contexts/context";
+import Styled from "styled-components";
+
+const SearchField = Styled.div`
+	align-self: center;
+
+input[type="text"] {
+	border-radius: 5px;
+	border: .5px solid lightgray;
+	height: 1.6rem;
+	width: 250px;
+}
+
+input[type="text"]:focus {
+	outline: none;
+}
+`;
 
 export default function SearchBar() {
 	const { searchValue, setSearchValue } = useContext(FeedContext);
@@ -8,13 +24,10 @@ export default function SearchBar() {
 		setSearchValue(value);
 	};
 	return (
-		<div className="searchField">
+		<SearchField>
 			<form>
 				<input type="text" placeholder="🔎" value={searchValue} onChange={onInputChange} />
-				{/* <button type="submit" className="search-btn" onClick={onInputChange}>
-					<img src={searchIcon} alt="search button" />
-				</button> */}
 			</form>
-		</div>
+		</SearchField>
 	);
 }

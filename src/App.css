@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #eeecec;
+}
+
 h1,
 h2,
 h3,
@@ -23,9 +27,7 @@ a {
 .logo-img {
   height: 45px;
 }
-html {
-  background-color: #eeecec;
-}
+
 
 .App {
   text-align: center;
@@ -61,4 +63,21 @@ html {
 
 .feed {
   display: block;
+}
+
+input[type="text"]:focus, textarea[type="text"]:focus, button:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+  outline: none;
+}
+
+option:checked {
+  background-color: #3184ed;
+  color: white;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button {
+  cursor: pointer;
 }

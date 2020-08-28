@@ -8,60 +8,61 @@ import Upvote from "./Upvote";
 import CommentSection from "./CommentSection";
 
 const PageContainer = Styled.div`
- margin: 5% auto;
- margin-top: 150px;
-`;
+	margin: 5% auto;
+	margin-top: 150px;
+	
+.issueContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: white;
+	border-radius: 15px;
+	width: 81%;
+	margin: 2% auto;
+	margin-top: 0%;
+	padding: 3%;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+};
 
-const IssueContainer = Styled.div`
- display: flex;
- flex-direction: column;
- justify-content: center;
- background-color: white;
- border-radius: 15px;
- width: 80%;
- margin: 5% auto;
- margin-top: 0%;
- padding: 3%;
 
 .category, .description, h1 {
     text-align: center;
-    /* border: 2px solid red; */
 };
 
 .category {
     margin-top: unset;
-}
+};
 
 .description {
     margin: 2% auto;
-}
+};
 
 p.descriptionLabel {
     text-decoration: italic;
     color: grey;
-}
+};
 
 h1 {
     margin-bottom: unset;
- }
+};
 
- #delete {
-     width: 60px;
-     background-color: unset;
-     border: unset;
-     font-size: 2.5rem;
-     color: black;
-     position: static;
-     top: 0%;
-     right: 0%;
-     margin: 0;
- }
+#delete {
+	width: 60px;
+	background-color: unset;
+	border: unset;
+	font-size: 2.5rem;
+	color: black;
+	position: static;
+	top: 0%;
+	right: 0%;
+	margin: 0;
+};
 
- #delete:hover {
-     color: crimson;
- }
+#delete:hover {
+    color: crimson;
+};
 
- #edit {
+#edit {
     width: 100px;
     height: 2.6rem;
     display: flex;
@@ -76,6 +77,7 @@ h1 {
     margin: 0 auto;
     margin-top: 1%;
     margin-bottom: 1%;
+};
 
 #edit:disabled {
     background-color: lightgray;
@@ -83,32 +85,35 @@ h1 {
 
 #edit:hover {
     background-color: white;
-    color: #3184ed;
+	color: #3184ed;
+	border: .5px solid #3184ed;
 };
- };
-`;
 
-const Back = Styled.div`
-width: 60px;
-margin-left: 10%;
-margin-top: 4%;
-margin-bottom: .5%;
-`;
+.back {
+	width: 60px;
+	margin-left: 10%;
+	margin-top: 4%;
+	margin-bottom: .5%;
+}
 
-const ImageContainer = Styled.div`
-display: flex;
-box-sizing: border-box;
-height: 50vh;
-justify-content: center;
-margin: 0 auto;
-`;
+.back:hover {
+	color: #3184ed;
+}
 
-const Img = Styled.img`
-object-fit: contain;
-width: 50vw;
-border-radius: 10px;
-/* border: 2px solid green; */
-margin-top: 0%;
+.imageContainer {
+	display: flex;
+	box-sizing: border-box;
+	height: 50vh;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+img.issue-page-image {
+	object-fit: contain;
+	width: 50vw;
+	border-radius: 10px;
+	margin-top: 0%;
+}
 `;
 
 export default function IssuePage(props) {
@@ -118,7 +123,7 @@ export default function IssuePage(props) {
 	const [upvote, setUpvote] = useState(0);
 
 	const deleteIssue = (id) => {
-		console.log(id);
+		// console.log(id);
 		axiosWithAuth()
 			.delete(`/api/issues/${id}`)
 			.then(() => {
@@ -126,7 +131,7 @@ export default function IssuePage(props) {
 				history.push("/feed");
 			})
 			.catch((error) => {
-				console.log(error);
+				// console.log(error);
 				alert(`error ${error.message}`);
 			});
 	};
@@ -138,24 +143,23 @@ export default function IssuePage(props) {
 
 	return (
 		<PageContainer>
-			<Back>
-				<Link to="/feed">
+			<div className="back">
+				<Link className="back" to="/feed">
 					<i className="fas fa-chevron-left"></i>
 					&nbsp;Back
 				</Link>
-			</Back>
-
-			<IssueContainer>
+			</div>
+			<div className="issueContainer">
 				<button type="button" id="delete" onClick={() => deleteIssue(issue.issueId)}>
 					<i className="far fa-trash-alt"></i>
 				</button>
-				<ImageContainer>
+				<div className="imageContainer">
 					{issue.imageURL !== null && issue.imageURL !== "" ? (
-						<Img alt="issue pic" src={`${issue.imageURL}`} />
+						<img className="issue-page-image" alt="issue pic" src={`${issue.imageURL}`} />
 					) : (
-						<Img alt="default" src={imagedefault} />
+						<img className="issue-page-image" alt="default" src={imagedefault} />
 					)}
-				</ImageContainer>
+				</div>
 				<h1>{issue.title} </h1>
 				<div className="category">{issue.categoryName}</div>
 				{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
@@ -168,8 +172,7 @@ export default function IssuePage(props) {
 				<button type="button" id="edit" onClick={editIssue}>
 					Edit
 				</button>
-			</IssueContainer>
-
+			</div>
 			<div className="comments-container">
 				<CommentSection issue={issue} />
 			</div>

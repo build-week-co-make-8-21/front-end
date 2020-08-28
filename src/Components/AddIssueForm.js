@@ -6,17 +6,18 @@ import { NavLink, useHistory } from "react-router-dom";
 import Styled from "styled-components";
 
 const FormContainer = Styled.div`
- margin: 5% auto;
- margin-top: 150px;
- display: flex;
- text-align: center;
- flex-direction: column;
- justify-content: center;
- background-color: white;
- border-radius: 15px;
- width: 500px;
+	margin: 5% auto;
+	margin-top: 150px;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+	background-color: white;
+	border-radius: 15px;
+	width: 500px;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 
- @keyframes wiggle {
+@keyframes wiggle {
 		0% {
 			transform: translateX(39deg);
 		}
@@ -53,61 +54,86 @@ const FormContainer = Styled.div`
 	}
 
 
- h2{
-     color: #3184ED;
- }
- button {
-    width: 100px;
-    height: 2.6rem;
+h2 {
+    color: #3184ED;
+}
+
+button {
+    background-color: #3184ed;
+    color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 7px;
-    background-color: #3184ed;
-    font-weight: 500;
-    color: white;
-    cursor: pointer;
+    width: 100px;
+    height: 2.6rem;
     border: unset;
-    margin: 0 auto;
-    margin-bottom: 3%;
- }
+    border-radius: 7px;
+    font-weight: 500;
+    margin: 3% auto;
+    cursor: pointer;
+}
+
+button:hover {
+	background-color: white;
+	color: #3184ed;
+	border: .5px solid #3184ed;
+	cursor: pointer;
+}
+
 button:disabled {
-    background-color: lightgray;
- }
+	background-color: lightgray;
+	color: white;
+	border: unset;
+	cursor: not-allowed;
+}
 
+button:disabled:hover {
+	background-color: lightgray;
+	color: white;
+	border: unset;
+	cursor: not-allowed;
+}
 
- form div div.titleError {
-        color: crimson;
-        animation-name: wiggle;
-		animation-timing-function: ease-in;
-		animation-duration: 1s;
-        animation-iteration-count: 10;
- }
-`;
+form div div.titleError {
+	color: crimson;
+	animation-name: wiggle;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+	animation-iteration-count: 10;
+}
 
-const P = Styled.p`
-display: flex;
-height: 2rem;
-justify-content:center;
-text-align: center;
-align-items: center;
-width: 3rem;
-vertical-align: center;
-margin:unset;
-margin-left: 90%;
-margin-top: 1%;
-font-size: 16px;
-`;
+p {
+	display: flex;
+	height: 2rem;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	width: 3rem;
+	vertical-align: center;
+	margin: unset;
+	margin-left: 90%;
+	margin-top: 1%;
+	font-size: 16px;
+}
 
-const TextArea = Styled.textarea`
-width: 80%;
-height: 200px;
-`;
+i:hover {
+	color: crimson;
+}
 
-const Img = Styled.img`
-object-fit: contain;
-width: 80%;
-height: 200px;
+textarea[type="text"] {
+	width: 80%;
+	height: 200px;
+}
+
+img {
+	object-fit: contain;
+	width: 80%;
+	height: 200px;
+}
+
+input[name="imageURL"] {
+	width: 70%
+}
 `;
 
 const formSchema = yup.object().shape({
@@ -178,18 +204,18 @@ export default function AddIssuesForm() {
 				username: username,
 			})
 			.then((response) => {
-				console.log("formvalues", formValues);
-				console.log("response", response);
-				console.log("issues", issues);
-				console.log("username", username);
+				// console.log("formvalues", formValues);
+				// console.log("response", response);
+				// console.log("issues", issues);
+				// console.log("username", username);
 				addIssues([response.data, ...issues]);
 				setFormValues(initialFormValues);
-				console.log(response.data);
+				// console.log(response.data);
 				getIssues();
 				history.push("/feed");
 			})
 			.catch((error) => {
-				console.log(error.response.data);
+				// console.log(error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
@@ -202,11 +228,11 @@ export default function AddIssuesForm() {
 
 	return (
 		<FormContainer>
-			<P>
+			<p>
 				<NavLink to="/feed">
-					<i class="fas fa-times"></i>
+					<i className="fas fa-times"></i>
 				</NavLink>
-			</P>
+			</p>
 			<form onSubmit={formSubmit}>
 				<h2>Add New Post</h2>
 				<label htmlFor="title">
@@ -247,7 +273,7 @@ export default function AddIssuesForm() {
 					<div className="titleError">{errors.categoryName}</div>
 				</div>
 				<label htmlFor="description">
-					<TextArea
+					<textarea
 						type="text"
 						name="description"
 						value={formValues.description}
@@ -275,7 +301,7 @@ export default function AddIssuesForm() {
 				</div>
 				<br />
 				{formValues.imageURL !== null && formValues.imageURL !== "" ? (
-					<Img alt={formValues.title} src={`${formValues.imageURL}`} />
+					<img alt={formValues.title} src={`${formValues.imageURL}`} />
 				) : null}
 				<br />
 				<button type="submit" disabled={disabled} to="/feed">

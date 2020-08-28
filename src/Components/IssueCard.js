@@ -3,38 +3,37 @@ import Styled from "styled-components";
 import Upvote from "./Upvote";
 
 const CardContainer = Styled.div`
-background-color: white;
-border-radius: 15px;
-width: 50vw;
-padding: 3%;
-margin: 1% auto;
-`;
+	background-color: white;
+	border-radius: 15px;
+	width: 50vw;
+	padding: 3%;
+	margin: 1% auto;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 
-const ImageContainer = Styled.div`
-object-fit: cover;
-display: flex;
-justify-content: center;
-`;
+.imageContainer {
+	object-fit: cover;
+	display: flex;
+	justify-content: center;
+}
 
-const Img = Styled.img`
-object-fit: cover;
-width: 80%;
-border-radius: 10px;
-/* height: 200px; */
+img.issueCard-image {
+	object-fit: cover;
+	width: 80%;
+	border-radius: 10px;
+}
 `;
 
 export default function IssueCard(props) {
 	const { issue } = props;
-	console.log("from IssueCard", issue);
 	const [upvote, setUpvote] = useState(0);
 
 	return (
 		<CardContainer>
-			<ImageContainer>
+			<div className="imageContainer">
 				{issue.imageURL !== null && issue.imageURL !== "" ? (
-					<Img alt={issue.title} src={`${issue.imageURL}`} />
+					<img className="issueCard-image" alt={issue.title} src={`${issue.imageURL}`} />
 				) : null}
-			</ImageContainer>
+			</div>
 			<h2>{issue.title} </h2>
 			<Upvote upvote={upvote} setUpvote={setUpvote} />
 			<p>Category: {issue.categoryName}</p>

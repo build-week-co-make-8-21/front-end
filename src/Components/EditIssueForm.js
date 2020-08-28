@@ -6,17 +6,18 @@ import { NavLink, useHistory, useParams } from "react-router-dom";
 import Styled from "styled-components";
 
 const FormContainer = Styled.div`
- margin: 5% auto;
- margin-top: 150px;
- display: flex;
- text-align: center;
- flex-direction: column;
- justify-content: center;
- background-color: white;
- border-radius: 15px;
- width: 500px;
+	margin: 5% auto;
+	margin-top: 150px;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+	background-color: white;
+	border-radius: 15px;
+	width: 500px;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 
- @keyframes wiggle {
+@keyframes wiggle {
 		0% {
 			transform: translateX(39deg);
 		}
@@ -52,73 +53,87 @@ const FormContainer = Styled.div`
 		}
 	}
 
- h2{
-     color: #3184ED;
- }
- button {
-    width: 100px;
-    height: 2.6rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 7px;
+
+h2 {
+    color: #3184ED;
+}
+
+button {
     background-color: #3184ed;
-    font-weight: 500;
     color: white;
-    cursor: pointer;
-    border: unset;
-    margin: 0 auto;
-    margin-bottom: 3%;
- }
- button:disabled {
-    width: 100px;
-    height: 2.6rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 7px;
-    background-color: lightgray;
-    font-weight: 500;
-    color: white;
-    cursor: pointer;
+    width: 100px;
+    height: 2.6rem;
     border: unset;
-    margin: 0 auto;
-    margin-bottom: 3%;
- }
- 
- form div div.titleError {
-        color: crimson;
-        animation-name: wiggle;
-		animation-timing-function: ease-in;
-		animation-duration: 1s;
-		animation-iteration-count: 10;
- }
+    border-radius: 7px;
+    font-weight: 500;
+    margin: 3% auto;
+    cursor: pointer;
+}
 
-`;
+button:hover {
+	background-color: white;
+	color: #3184ed;
+	border: .5px solid #3184ed;
+	cursor: pointer;
+}
 
-const H6 = Styled.h6`
-display: flex;
-height: 2rem;
-justify-content:center;
-text-align: center;
-align-items: center;
-width: 3rem;
-vertical-align: center;
-margin:unset;
-margin-left: 90%;
-margin-top: 1%;
-font-size: 16px;
-`;
+button:disabled {
+	background-color: lightgray;
+	color: white;
+	border: unset;
+	cursor: not-allowed;
+}
 
-const TextArea = Styled.textarea`
-width: 80%;
-height: 200px;
-`;
+button:disabled:hover {
+	background-color: lightgray;
+	color: white;
+	border: unset;
+	cursor: not-allowed;
+}
 
-const Img = Styled.img`
-object-fit: contain;
-width: 80%;
-height: 200px;
+form div div.titleError {
+	color: crimson;
+	animation-name: wiggle;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+	animation-iteration-count: 10;
+}
+
+p {
+	display: flex;
+	height: 2rem;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	width: 3rem;
+	vertical-align: center;
+	margin: unset;
+	margin-left: 90%;
+	margin-top: 1%;
+	font-size: 16px;
+}
+
+i:hover {
+	color: crimson;
+}
+
+textarea[type="text"] {
+	width: 80%;
+	height: 200px;
+}
+
+img {
+	object-fit: contain;
+	width: 80%;
+	height: 200px;
+}
+
+input[name="imageURL"] {
+	width: 70%
+}
 `;
 
 const formSchema = yup.object().shape({
@@ -134,7 +149,7 @@ const formSchema = yup.object().shape({
 const initialDisabled = true;
 
 export default function EditIssueForm() {
-	const { issues, addIssues, username, getIssues } = useContext(FeedContext);
+	const { issues, addIssues, getIssues } = useContext(FeedContext);
 	const initialFormValues = {
 		title: "",
 		categoryId: "",
@@ -164,7 +179,7 @@ export default function EditIssueForm() {
 		axiosWithAuth()
 			.get(`/api/issues/${id}`)
 			.then((response) => {
-				console.log("get edit response data", response);
+				// console.log("get edit response data", response);
 				setFormValues(response.data);
 			});
 	}, [id]);
@@ -200,12 +215,12 @@ export default function EditIssueForm() {
 			.then((response) => {
 				addIssues([response.data, ...issues]);
 				setFormValues(initialFormValues);
-				console.log(response.data);
+				// console.log(response.data);
 				getIssues();
 				history.push("/feed");
 			})
 			.catch((error) => {
-				console.log(error.response.data);
+				// console.log(error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
@@ -218,11 +233,11 @@ export default function EditIssueForm() {
 
 	return (
 		<FormContainer>
-			<H6>
+			<p>
 				<NavLink to={`/issues/${id}`}>
-					<i class="fas fa-times"></i>
+					<i className="fas fa-times"></i>
 				</NavLink>
-			</H6>
+			</p>
 			<form onSubmit={formSubmit}>
 				<h2>Edit Post</h2>
 				<label htmlFor="title">
@@ -263,7 +278,7 @@ export default function EditIssueForm() {
 					<div className="titleError">{errors.categoryName}</div>
 				</div>
 				<label htmlFor="description">
-					<TextArea
+					<textarea
 						type="text"
 						name="description"
 						value={formValues.description}
@@ -291,7 +306,7 @@ export default function EditIssueForm() {
 				</div>
 				<br />
 				{formValues.imageURL !== null && formValues.imageURL !== "" ? (
-					<Img alt={formValues.title} src={`${formValues.imageURL}`} />
+					<img alt={formValues.title} src={`${formValues.imageURL}`} />
 				) : null}
 				<br />
 				<button type="submit" disabled={disabled} to="/feed">

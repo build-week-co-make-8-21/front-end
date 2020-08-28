@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory, Link } from "react-router-dom";
-import * as yup from "yup";
 import Styled from "styled-components";
-
+import * as yup from "yup";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { FeedContext } from "../contexts/context";
 
 const LoginDiv = Styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 150px;
-text-align: center;
-button.loginBtn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 150px;
+	text-align: center;
+
+button {
     width: 100px;
     height: 2.6rem;
     display: flex;
@@ -27,8 +27,16 @@ button.loginBtn {
     margin: 10% auto;
     border: unset;
 }
-button.loginBtn:disabled {
-        background-color: lightgray;
+
+button:hover  {
+	background-color: white;
+	color: #3184ed;
+	cursor: pointer;
+    };
+
+button:disabled {
+		background-color: lightgray;
+		cursor: not-allowed;
     };
 
 input[type="text"], input[type="password"] {
@@ -39,18 +47,38 @@ input[type="text"], input[type="password"] {
     width:100%;
     background-color: #ffffff;
     font-size: 1.2rem;
-    padding-left: 5%;
-    }
-.titleError {
-	color: crimson;
+	}
+
+.sign-up-div {
+	display: flex;
+	justify-content: center;
 }
+
 p.sign-up {
-    font-size: 1rem;
-    color: crimson;
+	width: 15%;
+    font-size: .8rem;
+	color: crimson;
+	position: absolute;
+	margin: 0 auto;
+	vertical-align: center;
 }
+
 p.sign-up:hover {
     font-size: 1rem;
     color: #3184ed;
+}
+
+.errors {
+	font-size: .9rem;
+}
+
+.titleError {
+	color: crimson;
+	margin: 0 auto;
+}
+
+h2 {
+	color: #3184ed;
 }
 `;
 
@@ -109,7 +137,6 @@ export default function Login() {
 		setCredentials({ ...credentials, [event.target.name]: event.target.value });
 	};
 
-	// make a post request to retrieve a token from the api
 	const onSubmit = (event) => {
 		event.preventDefault();
 		axiosWithAuth()
@@ -122,52 +149,50 @@ export default function Login() {
 				getIssues();
 			})
 			.catch((error) => {
-				console.log("Error:", error.response.data);
+				// console.log("Error:", error.response.data);
 				alert(`Oops.. Looks like there was an error. ${error.response.data.message}`);
 			});
 	};
-	// when you have handled the token, navigate to the BubblePage route
+
 	return (
-		<>
-			<LoginDiv>
-				<h2>Login</h2>
-				<form className="login-form" onSubmit={onSubmit}>
-					<label htmlFor="username">Username/Email:</label>
-					<br />
-					<input
-						type="text"
-						name="username"
-						placeholder="username or email"
-						value={credentials.username}
-						onChange={handleChange}
-					/>
-					<br />
-					<div className="errors">
-						<div className="titleError">{errors.username}</div>
-					</div>
-					<br />
-					<label htmlFor="password">Password:</label>
-					<br />
-					<input
-						type="password"
-						name="password"
-						placeholder="password"
-						value={credentials.password}
-						onChange={handleChange}
-					/>
-					<br />
-					<div className="errors">
-						<div className="titleError">{errors.password}</div>
-					</div>
-					<button className="loginBtn" disabled={buttonDisabled} name="submit">
-						Log in
-					</button>
-					<Link to="/">
-						<p className="sign-up"> Sign-up instead </p>
-					</Link>
-					<br />
-				</form>
-			</LoginDiv>
-		</>
+		<LoginDiv>
+			<h2>Login</h2>
+			<form className="login-form" onSubmit={onSubmit}>
+				<label htmlFor="username"></label>
+				<br />
+				<input
+					type="text"
+					name="username"
+					placeholder="username or email"
+					value={credentials.username}
+					onChange={handleChange}
+				/>
+				<br />
+				<div className="errors">
+					<div className="titleError">{errors.username}</div>
+				</div>
+				<br />
+				<label htmlFor="password"></label>
+				<br />
+				<input
+					type="password"
+					name="password"
+					placeholder="password"
+					value={credentials.password}
+					onChange={handleChange}
+				/>
+				<br />
+				<div className="errors">
+					<div className="titleError">{errors.password}</div>
+				</div>
+				<button disabled={buttonDisabled} name="submit">
+					Login
+				</button>
+				<Link className="sign-up-div" to="/">
+					<p className="sign-up"> Sign-up instead </p>
+				</Link>
+				<br />
+			</form>
+		</LoginDiv>
 	);
 }
