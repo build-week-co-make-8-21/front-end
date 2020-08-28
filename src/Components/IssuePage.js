@@ -30,7 +30,8 @@ const PageContainer = Styled.div`
 };
 
 .category {
-    margin-top: unset;
+	margin-top: unset;
+	font-style: italic;
 };
 
 .description {
