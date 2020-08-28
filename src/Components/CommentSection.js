@@ -27,6 +27,10 @@ input[type="text"] {
     padding-left: 5%;
 	}
 	
+	input[type="text"]:focus {
+outline:none;
+	}
+
 button{
 display:inline;
 border: 1px solid lightgray;
@@ -118,49 +122,3 @@ export default function CommentSection(props) {
 		</SectionContainer>
 	);
 }
-
-// ////////
-
-// const CommentSection = (props) => {
-// 	// Add state for the comments
-
-// 	const { comments } = props;
-
-// 	return (
-// 		<div>
-// 			{/* map through the comments data and return the Comment component */}
-// 			{comments.map((comment) => {
-// 				return <Comment key={comment.id} comment={comment} />;
-// 			})}
-// 			<CommentInput />
-// 		</div>
-// 	);
-// };
-
-// const Comment = (props) => {
-// 	return (
-// 		<div className="comment-text">
-// 			<span className="user">{props.comment.username}</span>{" "}
-// 			<span className="comment">{props.comment.text}</span>
-// 		</div>
-// 	);
-// };
-
-// export default Comment;
-
-// export default CommentSection;
-
-// const CommentInput = (props) => {
-// 	return (
-// 		<form className="comment-form" onSubmit={props.submitComment}>
-// 			<input
-// 				type="text"
-// 				value={props.comment}
-// 				placeholder="Add comment... "
-// 				onChange={props.changeComment}
-// 			/>
-// 		</form>
-// 	);
-// };
-
-// export default CommentInput;

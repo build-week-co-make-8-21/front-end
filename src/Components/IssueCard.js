@@ -41,7 +41,7 @@ export default function IssueCard(props) {
 			{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 				<p>Posted by: {issue.username}</p>
 			) : null}
-			<p>Decription: {issue.description}</p>
+			<p>Description: {issue.description}</p>
 		</CardContainer>
 	);
 }
