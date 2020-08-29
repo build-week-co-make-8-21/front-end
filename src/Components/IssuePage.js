@@ -161,7 +161,7 @@ export default function IssuePage(props) {
 			.then(() => {
 				getIssues();
 				history.push("/feed");
-				alert("Post deleted!");
+				// alert("Post deleted!");
 			})
 			.catch((error) => {
 				// console.log(error);

@@ -252,7 +252,7 @@ export default function AddIssuesForm() {
 				// console.log(response.data);
 				getIssues();
 				history.push("/feed");
-				alert("Post successful!");
+				// alert("Post successful!");
 			})
 			.catch((error) => {
 				// console.log(error.response.data);

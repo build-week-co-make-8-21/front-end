@@ -258,7 +258,7 @@ export default function EditIssueForm() {
 				// console.log(response.data);
 				getIssues();
 				history.push("/feed");
-				alert("Post updated!");
+				// alert("Post updated!");
 			})
 			.catch((error) => {
 				// console.log(error.response.data);
