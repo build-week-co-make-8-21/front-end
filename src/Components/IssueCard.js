@@ -33,6 +33,7 @@ img.issueCard-image {
 		border: 2px solid red;
 		margin: 0;
 		padding: 0;
+		height:unset;
     }
 }
 
