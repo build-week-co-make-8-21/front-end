@@ -136,7 +136,7 @@ img {
 }
 
 input[name="imageURL"] {
-	width: 70%
+	width: 70%;
 }
 `;
 

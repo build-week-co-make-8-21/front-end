@@ -18,7 +18,7 @@ const SectionContainer = Styled.div`
 	@media (max-width: 450px) {
 		width: 95vw;
 		padding: 5%;
-    }
+    };
 
 input[type="text"] {
 	display:inline;

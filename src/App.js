@@ -65,7 +65,7 @@ export default function App() {
 									style={{ textDecoration: "none" }}
 									path={`/issues/${issue.issueId}`}
 								>
-									<IssuePage issue={issue} />
+									<IssuePage issue={issue} key={issue.issueId} />
 								</PrivateRoute>
 							</>
 						);
