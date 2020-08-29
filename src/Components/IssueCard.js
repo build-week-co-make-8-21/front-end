@@ -14,15 +14,25 @@ const CardContainer = Styled.div`
     }
 
 .imageContainer {
-	object-fit: contain;
 	display: flex;
 	justify-content: center;
+	@media (max-width: 450px) {
+		width: 89vw;
+		margin: 0;
+		padding: 0;
+    }
 }
 
 img.issueCard-image {
 	object-fit: contain;
 	width: 80%;
 	border-radius: 10px;
+	@media (max-width: 450px) {
+		height: 30vh;
+		margin: 0;
+		padding: 0;
+		object-fit: cover;
+    }
 }
 
 .category {
