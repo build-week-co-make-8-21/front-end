@@ -30,7 +30,12 @@ input[type="text"] {
     width:100%;
     background-color: #ffffff;
     font-size: 1.2rem;
-    padding-left: 5%;
+	padding-left: 5%;
+	margin-bottom: 2rem;
+		@media (max-width: 450px) {
+			border: 1px solid lightgray;
+			border-radius: 10px;
+    };
 	}
 	
 input[type="text"]:focus {
@@ -44,6 +49,10 @@ button {
 	border-radius: 0 10px 10px 0;
 	background-color: #3184ed;
 	color: white;
+	height: 2rem;
+	@media (max-width: 450px) {
+			display: none;
+    };
 	}
 
 button:hover {
