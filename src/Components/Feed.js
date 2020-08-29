@@ -11,6 +11,9 @@ const FeedContainer = Styled.div`
     flex-direction: column;
     justify-content: center;
 	align-items: center;
+	@media (max-width: 450px) {
+		margin-top: 70px;
+    }
 
 span {
 	font-weight: 600;
@@ -30,6 +33,7 @@ span {
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 	@media (max-width: 450px) {
 		width: 95vw;
+		margin-top: 1%;
     }
 }
 

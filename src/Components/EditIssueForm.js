@@ -17,7 +17,7 @@ const FormContainer = Styled.div`
 	width: 500px;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 	@media (max-width: 450px) {
-		margin-top: 100px;
+		margin-top: 80px;
 		width: 95vw;
     }
 

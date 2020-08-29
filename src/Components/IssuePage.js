@@ -12,7 +12,7 @@ const PageContainer = Styled.div`
 	margin: 5% auto;
 	margin-top: 150px;
 	@media (max-width: 450px) {
-		margin-top: 100px;
+		margin-top: 80px;
     }
 	
 .issueContainer {
