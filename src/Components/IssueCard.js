@@ -14,11 +14,11 @@ const CardContainer = Styled.div`
     }
 
 .imageContainer {
-	object-fit: contain;
 	display: flex;
 	justify-content: center;
 	@media (max-width: 450px) {
 		width: 89vw;
+		height: 30vh;
 		border: 2px solid red;
 		margin: 0;
 		padding: 0;
@@ -33,7 +33,7 @@ img.issueCard-image {
 		border: 2px solid red;
 		margin: 0;
 		padding: 0;
-		height:unset;
+		object-fit: cover;
     }
 }
 
