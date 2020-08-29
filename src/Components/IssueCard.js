@@ -18,8 +18,6 @@ const CardContainer = Styled.div`
 	justify-content: center;
 	@media (max-width: 450px) {
 		width: 89vw;
-		height: 30vh;
-		border: 2px solid red;
 		margin: 0;
 		padding: 0;
     }
@@ -30,7 +28,7 @@ img.issueCard-image {
 	width: 80%;
 	border-radius: 10px;
 	@media (max-width: 450px) {
-		border: 2px solid red;
+		height: 30vh;
 		margin: 0;
 		padding: 0;
 		object-fit: cover;
