@@ -4,6 +4,9 @@ import Styled from "styled-components";
 
 const SearchField = Styled.div`
 	align-self: center;
+	@media (max-width: 450px) {
+		display: none;
+	}
 
 input[type="text"] {
 	border-radius: 5px;
