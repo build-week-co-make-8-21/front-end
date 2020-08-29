@@ -9,7 +9,6 @@ const MenuContainer = Styled.div`
 		display: flex;
     }
 
-
 #menu-button {
     z-index: 100;
     position: absolute;

@@ -61,6 +61,7 @@ p.sign-up {
 	position: absolute;
 	margin: 0 auto;
 	vertical-align: center;
+	z-index: 1;
 }
 
 p.sign-up:hover {
