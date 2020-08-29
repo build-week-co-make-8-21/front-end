@@ -47,7 +47,7 @@ const MenuContainer = Styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     z-index: 99;
     background: linear-gradient(to bottom, #56ccf2, #2f80ed);
     }
