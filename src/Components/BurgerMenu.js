@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 const MenuContainer = Styled.div`
     display: none;
+    text-align: center;
 
     @media (max-width: 450px) {
 		display: flex;
@@ -39,6 +40,7 @@ const MenuContainer = Styled.div`
 
 #menu-overlay {
     position: fixed;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -55,6 +57,10 @@ const MenuContainer = Styled.div`
     color: #FFFFFF;
 }
 
+#menu-overlay div {
+    margin: 0 auto;
+}
+
 .hide {
     display: none;
 }
@@ -62,6 +68,29 @@ const MenuContainer = Styled.div`
 .show {
     display: flex;
 }
+
+
+.logout {
+	width: 100px;
+    height: 2.6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #3184ed;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.logout:hover {
+	border: .5px solid #3184ed;
+    background-color: white;
+    color: #3184ed;
+    cursor: pointer;
+}
+
 `;
 
 export default function BurgerMenu() {
@@ -74,6 +103,12 @@ export default function BurgerMenu() {
 		} else {
 			setIsClicked(true);
 		}
+	};
+
+	const history = useHistory();
+	const logout = () => {
+		localStorage.clear("token");
+		history.push("/");
 	};
 
 	return (
@@ -98,6 +133,11 @@ export default function BurgerMenu() {
 				</div>
 				<div role="button">
 					<a href="https://jovial-austin-69da22.netlify.app/team.html">Team</a>
+				</div>
+				<div className={isClicked ? "hide logout" : "show logout"} onClick={menuToggle}>
+					<span type="button" onClick={logout}>
+						Logout
+					</span>
 				</div>
 			</nav>
 		</MenuContainer>

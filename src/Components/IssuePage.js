@@ -8,6 +8,7 @@ import Upvote from "./Upvote";
 import CommentSection from "./CommentSection";
 
 const PageContainer = Styled.div`
+	box-sizing: border-box;
 	margin: 5% auto;
 	margin-top: 150px;
 	@media (max-width: 450px) {
@@ -15,6 +16,7 @@ const PageContainer = Styled.div`
     }
 	
 .issueContainer {
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -26,6 +28,7 @@ const PageContainer = Styled.div`
 	padding: 3%;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 	@media (max-width: 450px) {
+		box-sizing: border-box;
 		width: 95vw;
     }
 };
@@ -63,6 +66,13 @@ h1 {
 	top: 0%;
 	right: 0%;
 	margin: 0;
+	@media (max-width: 450px) {
+		font-size: 2rem;
+		margin-top: 2%;
+		width: 40px;
+		text-align: center;
+		padding:0;
+    }
 };
 
 #delete:hover {
@@ -119,7 +129,9 @@ h1 {
 	justify-content: center;
 	margin: 0 auto;
 	@media (max-width: 450px) {
-		width: 95vw;
+		height: 30vh;
+		width: 89vw;
+		padding:0;
     }
 }
 
@@ -130,6 +142,7 @@ img.issue-page-image {
 	margin-top: 0%;
 	@media (max-width: 450px) {
 		width: 80%;
+		padding: 0;
     }
 }
 `;

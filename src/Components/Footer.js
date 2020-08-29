@@ -11,6 +11,9 @@ const FooterContainer = Styled.div`
     z-index: 1;
     bottom:0%;
     margin-top: 14.4%;
+    @media (max-width: 450px) {
+		z-index: 1;
+    }
 }
 
 .innerDiv {
@@ -24,6 +27,9 @@ const FooterContainer = Styled.div`
 .logo-icon {
     width: 64px;
     margin-bottom: 1.5%;
+    @media (max-width: 450px) {
+        width: 40px;
+    }
 }
 
 nav {
@@ -32,6 +38,9 @@ nav {
     display: flex;
     justify-content: space-around;
     margin: 1.3% 0;
+    @media (max-width: 450px) {
+        width: 100%;
+    }
 }
 
 nav a {
@@ -54,6 +63,12 @@ hr {
     border-bottom: 1px solid white;
     width: 100%;
 }
+
+.text-container p {
+    @media (max-width: 450px) {
+		font-size: .7rem;
+    }
+}
 `;
 
 export default function Footer() {
@@ -61,7 +76,11 @@ export default function Footer() {
 		<FooterContainer>
 			<div className="innerDiv">
 				<NavLink to="/feed">
-					<img src={logo} alt="Logo. Two hands in the shape of a heart." />
+					<img
+						className="logo-icon"
+						src={logo}
+						alt="Logo. Two hands in the shape of a heart."
+					/>
 				</NavLink>
 				<div className="break"></div>
 				<nav>
