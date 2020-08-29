@@ -88,6 +88,7 @@ h1 {
     border-radius: 7px;
     background-color: #3184ed;
     font-weight: 500;
+	font-size: 1rem;
     color: white;
     cursor: pointer;
     border: unset;

@@ -166,6 +166,9 @@ input[name="imageURL"] {
 		width: 67.5%
     }
 }
+button[type="submit"] {
+	font-size: 1rem;
+}
 `;
 
 const formSchema = yup.object().shape({
