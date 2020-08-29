@@ -4,6 +4,7 @@ import Styled from "styled-components";
 import avatar from "../Assets/avatar-default-200.png";
 
 const SectionContainer = Styled.div`
+	box-sizing: border-box;
 	padding: 2%;
 	margin: 0 auto;
 	display: flex;
@@ -14,6 +15,10 @@ const SectionContainer = Styled.div`
 	background-color: white;
 	border-radius:15px;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+	@media (max-width: 450px) {
+		width: 95vw;
+		padding: 5%;
+    };
 
 input[type="text"] {
 	display:inline;
@@ -47,10 +52,14 @@ button:hover {
 	}
 
 form {
+	box-sizing: border-box;
 	display: flex;
 	width: 500px;
 	margin-bottom: 2rem;
-	}
+		@media (max-width: 450px) {
+		width: 100%;
+    };
+}
 
 img {
 	border-radius: 50%;
@@ -59,9 +68,12 @@ img {
 }
 
 p {
+	display: flex;
+	align-items: center;
 	vertical-align: middle;
 	margin: 0 auto;
 }
+
 `;
 
 const initialValues = {
@@ -126,10 +138,13 @@ export default function CommentSection(props) {
 					{comments &&
 						comments.map((comment) => {
 							return (
-								<p>
-									<img src={avatar} alt="default" />
-									&nbsp;&nbsp; {comment.comment} <hr />
-								</p>
+								<>
+									<p>
+										<img src={avatar} alt="default" />
+										&nbsp;&nbsp; <span>{comment.comment}</span>
+									</p>
+									<hr />
+								</>
 							);
 						})}{" "}
 				</div>

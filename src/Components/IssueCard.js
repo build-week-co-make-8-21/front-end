@@ -9,6 +9,9 @@ const CardContainer = Styled.div`
 	padding: 3%;
 	margin: 1% auto;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+	@media (max-width: 450px) {
+		width: 95vw;
+    }
 
 .imageContainer {
 	object-fit: cover;

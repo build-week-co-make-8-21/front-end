@@ -52,7 +52,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
     height: 2rem;
     background-color: #ffffff;
     font-size: 1.2rem;
-	margin: unset
+	margin: unset;
 	}
 
 .already-registered-div {
@@ -64,6 +64,7 @@ p.already-registered {
     font-size: .8rem;
 	color: crimson;
 	position: absolute;
+	z-index: auto;
 	justify-self: center;
 	align-items: center;
 	margin: auto 0;

@@ -61,6 +61,10 @@ p.sign-up {
 	position: absolute;
 	margin: 0 auto;
 	vertical-align: center;
+	z-index: 1;
+	@media (max-width: 450px) {
+		width: 50%;
+    }
 }
 
 p.sign-up:hover {

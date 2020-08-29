@@ -8,10 +8,15 @@ import Upvote from "./Upvote";
 import CommentSection from "./CommentSection";
 
 const PageContainer = Styled.div`
+	box-sizing: border-box;
 	margin: 5% auto;
 	margin-top: 150px;
+	@media (max-width: 450px) {
+		margin-top: 100px;
+    }
 	
 .issueContainer {
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -22,6 +27,10 @@ const PageContainer = Styled.div`
 	margin-top: 0%;
 	padding: 3%;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+	@media (max-width: 450px) {
+		box-sizing: border-box;
+		width: 95vw;
+    }
 };
 
 
@@ -57,6 +66,13 @@ h1 {
 	top: 0%;
 	right: 0%;
 	margin: 0;
+	@media (max-width: 450px) {
+		font-size: 2rem;
+		margin-top: 2%;
+		width: 40px;
+		text-align: center;
+		padding:0;
+    }
 };
 
 #delete:hover {
@@ -95,6 +111,11 @@ h1 {
 	margin-left: 10%;
 	margin-top: 4%;
 	margin-bottom: .5%;
+	@media (max-width: 450px) {
+		margin-left: 3%;
+		margin-bottom: 4%;
+		margin-top: 1%;
+    }
 }
 
 .back:hover {
@@ -107,6 +128,11 @@ h1 {
 	height: 50vh;
 	justify-content: center;
 	margin: 0 auto;
+	@media (max-width: 450px) {
+		height: 30vh;
+		width: 89vw;
+		padding:0;
+    }
 }
 
 img.issue-page-image {
@@ -114,6 +140,10 @@ img.issue-page-image {
 	width: 50vw;
 	border-radius: 10px;
 	margin-top: 0%;
+	@media (max-width: 450px) {
+		width: 80%;
+		padding: 0;
+    }
 }
 `;
 

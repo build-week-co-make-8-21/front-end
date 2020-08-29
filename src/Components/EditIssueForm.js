@@ -16,6 +16,10 @@ const FormContainer = Styled.div`
 	border-radius: 15px;
 	width: 500px;
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+	@media (max-width: 450px) {
+		margin-top: 100px;
+		width: 95vw;
+    }
 
 @keyframes wiggle {
 		0% {
@@ -132,7 +136,7 @@ img {
 }
 
 input[name="imageURL"] {
-	width: 70%
+	width: 70%;
 }
 `;
 
