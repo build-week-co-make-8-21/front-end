@@ -14,13 +14,13 @@ const CardContainer = Styled.div`
     }
 
 .imageContainer {
-	object-fit: cover;
+	object-fit: contain;
 	display: flex;
 	justify-content: center;
 }
 
 img.issueCard-image {
-	object-fit: cover;
+	object-fit: contain;
 	width: 80%;
 	border-radius: 10px;
 }
