@@ -60,14 +60,14 @@ h1 {
 	width: 60px;
 	background-color: unset;
 	border: unset;
-	font-size: 2.5rem;
+	font-size: 2rem;
 	color: black;
 	position: static;
 	top: 0%;
 	right: 0%;
 	margin: 0;
 	@media (max-width: 450px) {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		margin-top: 2%;
 		width: 40px;
 		text-align: center;

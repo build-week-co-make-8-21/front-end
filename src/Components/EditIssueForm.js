@@ -120,6 +120,10 @@ p {
 	font-size: 16px;
 }
 
+i {
+	font-size: 1.5rem;
+}
+
 i:hover {
 	color: crimson;
 }
