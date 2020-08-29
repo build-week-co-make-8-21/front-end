@@ -13,7 +13,7 @@ const MenuContainer = Styled.div`
 #menu-button {
     z-index: 100;
     position: absolute;
-    right: 5%;
+    right: 3.5%;
     top: 10px;
     border: unset;
     background-color: unset;
