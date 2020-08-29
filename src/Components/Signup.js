@@ -96,7 +96,7 @@ h2 {
 const formSchema = yup.object().shape({
 	username: yup.string().min(3, "Username must be at least 3 characters").required(),
 	email: yup.string().email("Must be a valid Email").required(),
-	phoneNumber: yup.number().min(10, "Must be a valid Phone Number"),
+	phoneNumber: yup.number().min(10, "Must be a valid Phone Number. e.g. 3101234567"),
 	password: yup
 		.string()
 		.min(6, "Username must be at least 6 characters")
@@ -117,6 +117,7 @@ const initialErrors = {
 	username: "",
 	email: "",
 	phoneNumber: "",
+	password: "",
 	passwordConfirmation: "",
 };
 
@@ -233,6 +234,7 @@ export default function Signup() {
 					onChange={inputChange}
 				/>
 				<br />
+				<div className="titleError">{errors.password}</div>
 				<label className="signup-label" htmlFor="passwordConfirmation">
 					Confirm Password&nbsp;&nbsp;&nbsp;
 				</label>
