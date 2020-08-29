@@ -64,6 +64,7 @@ p.already-registered {
     font-size: .8rem;
 	color: crimson;
 	position: absolute;
+	z-index: auto;
 	justify-self: center;
 	align-items: center;
 	margin: auto 0;

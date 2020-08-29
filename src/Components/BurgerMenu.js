@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const MenuContainer = Styled.div`
     display: none;
@@ -7,48 +8,60 @@ const MenuContainer = Styled.div`
     @media (max-width: 450px) {
 		display: flex;
     }
-    
+
+
 #menu-button {
-    display: flex;
     z-index: 100;
-    right: 10%;
     position: absolute;
-    top: 20px;
-    color: #000000A6;
-    font-size: 5rem;
+    right: 5%;
+    top: 10px;
     border: unset;
     background-color: unset;
-    width: 20px;
-    height: 20px;
+}
+
+#menu-button i {
+    font-size: 2.6rem;
+    color: #3184ed;
 }
 
 #x {
-    display: flex;
     z-index: 100;
     position: fixed;
-    top: 17px;
-    right: 4.5%;
+    top: 8px;
+    right: 7%;
     color: #FFFFFF;
     font-size: 5.5rem;
 }
 
+#x i {
+    font-size: 3rem;
+    color: white;
+}
+
 #menu-overlay {
-    display: none;
     position: fixed;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: 99;
-    background-image: linear-gradient(180deg, #6A11CB 15.25%, #2575FC 100%);
+    background: linear-gradient(to bottom, #56ccf2, #2f80ed);
     }
 #menu-overlay div a {
-    font-size: 5rem;
-    line-height: 10rem;
+    font-size: 2rem;
+    line-height: 4rem;
     color: #FFFFFF;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
 }
 `;
 
@@ -57,36 +70,35 @@ export default function BurgerMenu() {
 
 	const menuToggle = (event) => {
 		event.preventDefault();
-		// if (isClicked === true) {
-		// 	menuOverlay.style.display = "none";
-		// 	menuButton.style.display = "flex";
-		// 	x.style.display = "none";
-		// 	setIsClicked(false);
-		// } else {
-		// 	menuOverlay.style.display = "flex";
-		// 	menuButton.style.display = "none";
-		// 	x.style.display = "flex";
-		// 	setIsClicked(true);
-		// }
+		if (isClicked === true) {
+			setIsClicked(false);
+		} else {
+			setIsClicked(true);
+		}
 	};
 
 	return (
 		<MenuContainer>
-			<button type="button" id="menu-button" className="toggle-menu" onClick={menuToggle}>
+			<button
+				type="button"
+				id="menu-button"
+				className={isClicked ? "hide" : "show"}
+				onClick={menuToggle}
+			>
 				<i className="fas fa-bars"></i>
 			</button>
-			<div role="button" id="x" class="toggle-menu">
+			<div role="button" id="x" className={isClicked ? "show" : "hide"} onClick={menuToggle}>
 				<i className="fas fa-times"></i>
 			</div>
-			<nav role="navigation" id="menu-overlay">
-				<div role="button">
-					<a href="index.html">Home</a>
+			<nav role="navigation" id="menu-overlay" className={isClicked ? "show" : "hide"}>
+				<div role="button" onClick={menuToggle}>
+					<NavLink to="/feed">Home</NavLink>
 				</div>
 				<div role="button">
-					<a href="about.html">About</a>
+					<a href="https://jovial-austin-69da22.netlify.app/about.html">About</a>
 				</div>
 				<div role="button">
-					<a href="team.html">Team</a>
+					<a href="https://jovial-austin-69da22.netlify.app/team.html">Team</a>
 				</div>
 			</nav>
 		</MenuContainer>
