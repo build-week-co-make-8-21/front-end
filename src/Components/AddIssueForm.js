@@ -127,6 +127,31 @@ i:hover {
 textarea[type="text"] {
 	width: 80%;
 	height: 200px;
+	@media (max-width: 450px) {
+		font-size: 16px;
+		padding: 1%;
+		margin: .5%;
+    }
+}
+
+input[type="text"], select, option {
+	@media (max-width: 450px) {
+		font-size: 16px;
+		padding: 1%;
+		margin: .5%;
+    }
+}
+
+input[type="text"] {
+	@media (max-width: 450px) {
+		width: 70%
+    }
+}
+
+select, option {
+	@media (max-width: 450px) {
+		width: 80%
+    }
 }
 
 img {
@@ -137,6 +162,9 @@ img {
 
 input[name="imageURL"] {
 	width: 70%;
+	@media (max-width: 450px) {
+		width: 67.5%
+    }
 }
 `;
 
