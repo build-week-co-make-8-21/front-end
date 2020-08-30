@@ -83,6 +83,10 @@ p {
 	margin: 0 auto;
 }
 
+.comments-container {
+	max-width: 600px;
+}
+
 `;
 
 const initialValues = {
@@ -143,7 +147,7 @@ export default function CommentSection(props) {
 				<button onClick={submitComment}>send</button>
 			</form>
 			<div>
-				<div>
+				<div className="comments-container">
 					{comments &&
 						comments.map((comment) => {
 							return (
