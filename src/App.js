@@ -12,6 +12,7 @@ import IssuePage from "./Components/IssuePage";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import PrivateRoute from "./Components/PrivateRoute";
+import BurgerMenu from "./Components/BurgerMenu";
 
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 import { FeedContext } from "./contexts/context";
@@ -51,6 +52,7 @@ export default function App() {
 				}}
 			>
 				<Header />
+				<BurgerMenu />
 				<Route exact path="/" component={Signup} />
 				<Route exact path="/login" component={Login} />
 				<PrivateRoute exact path="/feed" component={Feed} />

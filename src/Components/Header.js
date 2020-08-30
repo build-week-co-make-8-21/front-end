@@ -3,7 +3,6 @@ import logo from "../Assets/logo2.png";
 import { NavLink, useHistory } from "react-router-dom";
 import Styled from "styled-components";
 import SearchBar from "./SearchBar";
-import BurgerMenu from "./BurgerMenu";
 
 const ContainerDiv = Styled.nav`
 	box-sizing: border-box;
@@ -87,7 +86,6 @@ export default function Header() {
 					<a href="https://jovial-austin-69da22.netlify.app/about.html">About</a>
 					<a href="https://jovial-austin-69da22.netlify.app/team.html">Team</a>
 				</div>
-				<BurgerMenu />
 				<div className="search-logout">
 					<SearchBar />
 					<div className="logout">

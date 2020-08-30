@@ -4,15 +4,16 @@ import { NavLink, useHistory } from "react-router-dom";
 
 const MenuContainer = Styled.div`
     display: none;
+    position: relative;
     text-align: center;
-
+    z-index:100;
     @media (max-width: 450px) {
 		display: flex;
     }
 
 #menu-button {
     z-index: 100;
-    position: absolute;
+    position: fixed;
     right: 2%;
     top: 10px;
     border: unset;

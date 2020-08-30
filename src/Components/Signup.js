@@ -11,6 +11,9 @@ const SignUpDiv = Styled.div`
 	align-items: center;
 	margin-top: 150px;
 	text-align: center;
+	@media (max-width: 450px) {
+		margin-top: 95px;
+    }
 
 button {
     width: 100px;
@@ -64,7 +67,7 @@ p.already-registered {
     font-size: .8rem;
 	color: crimson;
 	position: absolute;
-	z-index: auto;
+	z-index: 0;
 	justify-self: center;
 	align-items: center;
 	margin: auto 0;

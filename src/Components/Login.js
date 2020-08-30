@@ -10,8 +10,11 @@ const LoginDiv = Styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 150px;
 	text-align: center;
+	margin-top: 150px;
+	@media (max-width: 450px) {
+		margin-top: 110px;
+    }
 
 button {
     width: 100px;
@@ -61,7 +64,7 @@ p.sign-up {
 	position: absolute;
 	margin: 0 auto;
 	vertical-align: center;
-	z-index: 1;
+	z-index: 0;
 	@media (max-width: 450px) {
 		width: 50%;
     }
