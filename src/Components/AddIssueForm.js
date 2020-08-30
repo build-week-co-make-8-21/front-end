@@ -6,7 +6,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import Styled from "styled-components";
 
 const FormContainer = Styled.div`
-	margin: 5% auto;
+	margin: 0 auto;
 	margin-top: 150px;
 	display: flex;
 	text-align: center;
@@ -19,6 +19,7 @@ const FormContainer = Styled.div`
 	@media (max-width: 450px) {
 		margin-top: 80px;
 		width: 95vw;
+		border: 2px solid red;
     }
 
 @keyframes wiggle {

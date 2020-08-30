@@ -51,28 +51,32 @@ export default function App() {
 					setUpvote,
 				}}
 			>
-				<Header />
-				<BurgerMenu />
-				<Route exact path="/" component={Signup} />
-				<Route exact path="/login" component={Login} />
-				<PrivateRoute exact path="/feed" component={Feed} />
-				<PrivateRoute exact path="/create" component={AddIssueForm} />
-				<PrivateRoute exact path="/editIssue/:id" component={EditIssueForm} />
-				{issues &&
-					issues.map((issue) => {
-						return (
-							<>
-								<PrivateRoute
-									exact
-									style={{ textDecoration: "none" }}
-									path={`/issues/${issue.issueId}`}
-								>
-									<IssuePage issue={issue} key={issue.issueId} />
-								</PrivateRoute>
-							</>
-						);
-					})}
-				<Footer />
+				<div className="App-container">
+					<Header />
+					<BurgerMenu />
+					<div className="App-content">
+						<Route exact path="/" component={Signup} />
+						<Route exact path="/login" component={Login} />
+						<PrivateRoute exact path="/feed" component={Feed} />
+						<PrivateRoute exact path="/create" component={AddIssueForm} />
+						<PrivateRoute exact path="/editIssue/:id" component={EditIssueForm} />
+						{issues &&
+							issues.map((issue) => {
+								return (
+									<>
+										<PrivateRoute
+											exact
+											style={{ textDecoration: "none" }}
+											path={`/issues/${issue.issueId}`}
+										>
+											<IssuePage issue={issue} key={issue.issueId} />
+										</PrivateRoute>
+									</>
+								);
+							})}
+					</div>
+					<Footer />
+				</div>
 			</FeedContext.Provider>
 		</Router>
 	);

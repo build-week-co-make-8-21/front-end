@@ -28,6 +28,19 @@ a {
   height: 45px;
 }
 
+.App-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+.App-content {
+  padding-bottom: 250px;
+}
+@media (max-width: 450px) {
+  .App-content {
+    padding-bottom: 150px;
+  }
+  }
 
 .App {
   text-align: center;

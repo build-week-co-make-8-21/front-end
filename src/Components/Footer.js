@@ -7,7 +7,8 @@ const FooterContainer = Styled.div`
     background: linear-gradient(to bottom, #56ccf2, #2f80ed);
     color: white;
     padding: 1% 0;
-    position: relative;
+    position: absolute;
+    /* transform:translateY(100%); */
     bottom:0;
     margin-top: 14.4%;
     width: 100%;

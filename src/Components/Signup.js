@@ -27,7 +27,7 @@ button {
 	font-size: 1rem;
     color: white;
     cursor: pointer;
-    margin: 2% auto;
+    margin: 6% auto;
     border: unset;
 }
 
@@ -64,14 +64,18 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
 }
 
 p.already-registered {
+	width: 15%;
     font-size: .8rem;
 	color: crimson;
 	position: absolute;
+	margin: 0 auto;
+	vertical-align: center;
 	z-index: 0;
-	justify-self: center;
-	align-items: center;
-	margin: auto 0;
+	@media (max-width: 450px) {
+		width: 50%;
+    }
 }
+
 p.already-registered:hover {
     font-size: 1rem;
     color: #3184ed;

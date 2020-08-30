@@ -13,7 +13,7 @@ const FeedContainer = Styled.div`
 	align-items: center;
 	@media (max-width: 450px) {
 		margin-top: 70px;
-    }
+	}
 
 span {
 	font-weight: 600;
