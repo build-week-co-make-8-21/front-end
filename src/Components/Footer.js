@@ -9,7 +9,6 @@ const FooterContainer = Styled.div`
     padding: 1% 0;
     position: absolute;
     bottom:0;
-    margin-top: 14.4%;
     width: 100%;
     @media (max-width: 450px) {
         z-index: 0;
