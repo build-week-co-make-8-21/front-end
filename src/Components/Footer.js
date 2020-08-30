@@ -8,7 +8,6 @@ const FooterContainer = Styled.div`
     color: white;
     padding: 1% 0;
     position: absolute;
-    /* transform:translateY(100%); */
     bottom:0;
     margin-top: 14.4%;
     width: 100%;

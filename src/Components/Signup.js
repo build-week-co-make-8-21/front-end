@@ -64,6 +64,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
 }
 
 p.already-registered {
+	text-align: center;
 	width: 15%;
     font-size: .8rem;
 	color: crimson;
@@ -83,7 +84,8 @@ p.already-registered:hover {
 
 p.form-terms-text {
 	font-size: .8rem;
-    color: gray;
+	color: gray;
+	line-height: .9rem;
 }
 
 .errors {
