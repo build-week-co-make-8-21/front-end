@@ -53,7 +53,7 @@ export default function IssueCard(props) {
 				) : null}
 			</div>
 			<h2>{issue.title} </h2>
-			<Upvote upvote={upvote} setUpvote={setUpvote} />
+			<Upvote upvote={upvote} setUpvote={setUpvote} id={issue.issueId} />
 			<p className="category">
 				{" "}
 				{/*<span> Category: </span>*/} {issue.categoryName}

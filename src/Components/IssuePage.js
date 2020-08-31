@@ -198,7 +198,7 @@ export default function IssuePage(props) {
 				{issue.username !== "" && issue.username !== null && issue.username !== undefined ? (
 					<p>Posted by: {issue.username}</p>
 				) : null}
-				<Upvote upvote={upvote} setUpvote={setUpvote} />
+				<Upvote upvote={upvote} setUpvote={setUpvote} id={issue.issueId} />
 				<div className="description">
 					<p className="descriptionLabel">Description</p> {issue.description}
 				</div>

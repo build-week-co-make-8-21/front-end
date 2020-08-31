@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Styled from "styled-components";
+import ls from "local-storage";
 
 const UpvoteDiv = Styled.div`
 button {
@@ -15,13 +16,19 @@ button {
 `;
 
 export default function Upvote(props) {
-	const { upvote, setUpvote } = props;
+	const { upvote, setUpvote, id } = props;
 
 	const upvotePost = (event) => {
 		event.preventDefault();
-		let newCount = upvote;
-		setUpvote(newCount + 1);
+		let newCount = 1 + upvote;
+		setUpvote(newCount);
+		ls.set(`upvote${id}`, upvote);
 	};
+
+	useEffect(() => {
+		let upvoteCount = ls.get(`upvote${id}`);
+		setUpvote(upvoteCount);
+	}, [id, setUpvote]);
 
 	return (
 		<UpvoteDiv>
