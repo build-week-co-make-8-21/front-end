@@ -22,7 +22,7 @@ export default function Upvote(props) {
 		event.preventDefault();
 		let newCount = 1 + upvote;
 		setUpvote(newCount);
-		ls.set(`upvote${id}`, upvote);
+		ls.set(`upvote${id}`, newCount);
 	};
 
 	useEffect(() => {
